@@ -136,8 +136,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Output Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrv-sT-x6X">
-                                <rect key="frame" x="20" y="318" width="280" height="26"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Output Address" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="xrv-sT-x6X">
+                                <rect key="frame" x="20" y="307" width="280" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -162,7 +162,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="None provided" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGP-cP-7MH">
-                                <rect key="frame" x="20" y="460" width="113" height="21"/>
+                                <rect key="frame" x="20" y="460" width="280" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="highlightedColor"/>
@@ -175,6 +175,7 @@
                         <outlet property="mapView" destination="9Hc-yc-VlM" id="Tqv-DB-oYY"/>
                         <outlet property="marketNameLabel" destination="2eb-mK-i18" id="xuh-A4-IAu"/>
                         <outlet property="outputAddressLabel" destination="xrv-sT-x6X" id="yEm-c4-qv5"/>
+                        <outlet property="outputProductsLabel" destination="LCR-f7-Nzb" id="vZK-f1-SFj"/>
                         <outlet property="outputScheduleLabel" destination="QGP-cP-7MH" id="bgS-hS-MBF"/>
                     </connections>
                 </viewController>

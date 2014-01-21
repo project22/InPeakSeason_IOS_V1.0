@@ -14,11 +14,15 @@
 
 @interface MarketDetailViewController : UIViewController <MKMapViewDelegate>
 
+@property (strong, nonatomic) NSString *marketID;
+@property (strong, nonatomic) NSString *marketName;
+
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UILabel *marketNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *outputAddressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *outputProductsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *outputScheduleLabel;
-@property (strong, nonatomic) NSString *marketID;
-@property (strong, nonatomic) NSString *marketName;
+
+
 
 @end

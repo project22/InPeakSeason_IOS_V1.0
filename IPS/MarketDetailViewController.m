@@ -28,7 +28,11 @@
     NSLog(@"Market details are: %@", marketDetails);
     
     self.marketNameLabel.text = self.marketName;
-//    self.outputAddressLabel.text = [NSString stringWithFormat:@"%@", [marketDetails objectAtIndex:indexPath.row] valueForKey:@"marketname"]];
+    // get the pieces out of the dictionary object.  "marketdetail" is root object.
+//    [result valueForKeyPath:@"location.name"];
+    self.outputAddressLabel.text = [marketDetails  valueForKeyPath:@"marketdetails.Address"];
+    self.outputProductsLabel.text = [marketDetails  valueForKeyPath:@"marketdetails.Products"];
+    self.outputScheduleLabel.text = [marketDetails  valueForKeyPath:@"marketdetails.Schedule"];
     
 }
 
