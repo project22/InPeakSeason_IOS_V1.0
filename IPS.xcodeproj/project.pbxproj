@@ -19,6 +19,15 @@
 		DBFC77AF188DE381000181C6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFC7797188DE381000181C6 /* UIKit.framework */; };
 		DBFC77B7188DE381000181C6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DBFC77B5188DE381000181C6 /* InfoPlist.strings */; };
 		DBFC77B9188DE381000181C6 /* IPSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DBFC77B8188DE381000181C6 /* IPSTests.m */; };
+		DBFC77C6188DE3F4000181C6 /* Market.m in Sources */ = {isa = PBXBuildFile; fileRef = DBFC77C5188DE3F4000181C6 /* Market.m */; };
+		DBFC77C9188DE402000181C6 /* Recipe.m in Sources */ = {isa = PBXBuildFile; fileRef = DBFC77C8188DE402000181C6 /* Recipe.m */; };
+		DBFC77CC188DE41B000181C6 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = DBFC77CB188DE41B000181C6 /* Product.m */; };
+		DBFC77CF188DE453000181C6 /* ProductsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBFC77CE188DE453000181C6 /* ProductsViewController.m */; };
+		DBFC77D2188DE46B000181C6 /* MarketsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBFC77D1188DE46B000181C6 /* MarketsViewController.m */; };
+		DBFC77D8188DE4B6000181C6 /* ProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBFC77D7188DE4B6000181C6 /* ProductDetailViewController.m */; };
+		DBFC77DB188DE4CE000181C6 /* MarketDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBFC77DA188DE4CE000181C6 /* MarketDetailViewController.m */; };
+		DBFC77DE188DE50B000181C6 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBFC77DD188DE50B000181C6 /* MainStoryboard.storyboard */; };
+		DBFC77E0188DE8F1000181C6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFC77DF188DE8F1000181C6 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +57,22 @@
 		DBFC77B4188DE381000181C6 /* IPSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IPSTests-Info.plist"; sourceTree = "<group>"; };
 		DBFC77B6188DE381000181C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DBFC77B8188DE381000181C6 /* IPSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IPSTests.m; sourceTree = "<group>"; };
+		DBFC77C4188DE3F4000181C6 /* Market.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Market.h; sourceTree = "<group>"; };
+		DBFC77C5188DE3F4000181C6 /* Market.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Market.m; sourceTree = "<group>"; };
+		DBFC77C7188DE402000181C6 /* Recipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recipe.h; sourceTree = "<group>"; };
+		DBFC77C8188DE402000181C6 /* Recipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recipe.m; sourceTree = "<group>"; };
+		DBFC77CA188DE41B000181C6 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
+		DBFC77CB188DE41B000181C6 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
+		DBFC77CD188DE453000181C6 /* ProductsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductsViewController.h; sourceTree = "<group>"; };
+		DBFC77CE188DE453000181C6 /* ProductsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductsViewController.m; sourceTree = "<group>"; };
+		DBFC77D0188DE46B000181C6 /* MarketsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketsViewController.h; sourceTree = "<group>"; };
+		DBFC77D1188DE46B000181C6 /* MarketsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketsViewController.m; sourceTree = "<group>"; };
+		DBFC77D6188DE4B6000181C6 /* ProductDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailViewController.h; sourceTree = "<group>"; };
+		DBFC77D7188DE4B6000181C6 /* ProductDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailViewController.m; sourceTree = "<group>"; };
+		DBFC77D9188DE4CE000181C6 /* MarketDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketDetailViewController.h; sourceTree = "<group>"; };
+		DBFC77DA188DE4CE000181C6 /* MarketDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketDetailViewController.m; sourceTree = "<group>"; };
+		DBFC77DD188DE50B000181C6 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		DBFC77DF188DE8F1000181C6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBFC77E0188DE8F1000181C6 /* CoreLocation.framework in Frameworks */,
 				DBFC7796188DE381000181C6 /* CoreGraphics.framework in Frameworks */,
 				DBFC7798188DE381000181C6 /* UIKit.framework in Frameworks */,
 				DBFC7794188DE381000181C6 /* Foundation.framework in Frameworks */,
@@ -96,6 +122,7 @@
 		DBFC7792188DE381000181C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DBFC77DF188DE8F1000181C6 /* CoreLocation.framework */,
 				DBFC7793188DE381000181C6 /* Foundation.framework */,
 				DBFC7795188DE381000181C6 /* CoreGraphics.framework */,
 				DBFC7797188DE381000181C6 /* UIKit.framework */,
@@ -107,6 +134,10 @@
 		DBFC7799188DE381000181C6 /* IPS */ = {
 			isa = PBXGroup;
 			children = (
+				DBFC77E1188DED3F000181C6 /* Delegates */,
+				DBFC77DC188DE4F2000181C6 /* Views */,
+				DBFC77C3188DE39F000181C6 /* Controllers */,
+				DBFC77C2188DE38B000181C6 /* Models */,
 				DBFC77A2188DE381000181C6 /* AppDelegate.h */,
 				DBFC77A3188DE381000181C6 /* AppDelegate.m */,
 				DBFC77A5188DE381000181C6 /* Images.xcassets */,
@@ -142,6 +173,49 @@
 				DBFC77B5188DE381000181C6 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DBFC77C2188DE38B000181C6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DBFC77C4188DE3F4000181C6 /* Market.h */,
+				DBFC77C5188DE3F4000181C6 /* Market.m */,
+				DBFC77C7188DE402000181C6 /* Recipe.h */,
+				DBFC77C8188DE402000181C6 /* Recipe.m */,
+				DBFC77CA188DE41B000181C6 /* Product.h */,
+				DBFC77CB188DE41B000181C6 /* Product.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		DBFC77C3188DE39F000181C6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DBFC77CD188DE453000181C6 /* ProductsViewController.h */,
+				DBFC77CE188DE453000181C6 /* ProductsViewController.m */,
+				DBFC77D0188DE46B000181C6 /* MarketsViewController.h */,
+				DBFC77D1188DE46B000181C6 /* MarketsViewController.m */,
+				DBFC77D6188DE4B6000181C6 /* ProductDetailViewController.h */,
+				DBFC77D7188DE4B6000181C6 /* ProductDetailViewController.m */,
+				DBFC77D9188DE4CE000181C6 /* MarketDetailViewController.h */,
+				DBFC77DA188DE4CE000181C6 /* MarketDetailViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		DBFC77DC188DE4F2000181C6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DBFC77DD188DE50B000181C6 /* MainStoryboard.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		DBFC77E1188DED3F000181C6 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +293,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBFC77DE188DE50B000181C6 /* MainStoryboard.storyboard in Resources */,
 				DBFC779E188DE381000181C6 /* InfoPlist.strings in Resources */,
 				DBFC77A6188DE381000181C6 /* Images.xcassets in Resources */,
 			);
@@ -240,7 +315,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBFC77A4188DE381000181C6 /* AppDelegate.m in Sources */,
+				DBFC77CC188DE41B000181C6 /* Product.m in Sources */,
+				DBFC77DB188DE4CE000181C6 /* MarketDetailViewController.m in Sources */,
 				DBFC77A0188DE381000181C6 /* main.m in Sources */,
+				DBFC77D8188DE4B6000181C6 /* ProductDetailViewController.m in Sources */,
+				DBFC77C6188DE3F4000181C6 /* Market.m in Sources */,
+				DBFC77D2188DE46B000181C6 /* MarketsViewController.m in Sources */,
+				DBFC77CF188DE453000181C6 /* ProductsViewController.m in Sources */,
+				DBFC77C9188DE402000181C6 /* Recipe.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
