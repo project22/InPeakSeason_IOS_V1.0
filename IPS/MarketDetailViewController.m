@@ -13,20 +13,30 @@
 @end
 
 @implementation MarketDetailViewController
+@synthesize mapView;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.mapView.delegate = self;
+    
+    Market *market = [[Market alloc] init];
+    NSDictionary *marketDetails = [market getMarketDetails:self.marketID];
+    NSLog(@"Market details are: %@", marketDetails);
+    
+    self.marketNameLabel.text = self.marketName;
+//    self.outputAddressLabel.text = [NSString stringWithFormat:@"%@", [marketDetails objectAtIndex:indexPath.row] valueForKey:@"marketname"]];
+    
+}
+
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+{
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 800, 800);
+    [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
+    NSLog(@"I should show my location now");
 }
 
 - (void)didReceiveMemoryWarning

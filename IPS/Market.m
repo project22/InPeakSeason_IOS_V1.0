@@ -11,7 +11,7 @@
 
 @implementation Market
 
-- (NSDictionary *)GetMarketsForLocation:(CLLocation *)userLocation {
+- (NSDictionary *)getMarketsForLocation:(CLLocation *)userLocation {
     
     NSDictionary *marketDictionary;
     
@@ -31,6 +31,23 @@
     }
     
     return marketDictionary;
+}
+
+- (NSDictionary *)getMarketDetails:(NSString *)marketID {
+    
+    NSDictionary *marketDetails;
+    
+    
+    //run the JSON query to USDA api
+    NSString *jsonString = [[NSString alloc]initWithFormat: @"http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=%@", marketID ];
+    NSURL *jsonURL = [NSURL URLWithString:jsonString];
+    
+    NSData *jsonData = [NSData dataWithContentsOfURL:jsonURL];
+    NSError *fetchMarketsError;
+    marketDetails = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&fetchMarketsError];
+    
+    
+    return marketDetails;
 }
 
 @end

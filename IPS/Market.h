@@ -11,6 +11,7 @@
 
 @interface Market : NSObject
 
-- (NSDictionary *)GetMarketsForLocation:(CLLocation *)userLocation;
+- (NSDictionary *)getMarketsForLocation:(CLLocation *)userLocation;
+- (NSDictionary *)getMarketDetails:(NSString *)marketID;
 
 @end

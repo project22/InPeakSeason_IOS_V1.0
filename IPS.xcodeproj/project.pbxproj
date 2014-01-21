@@ -28,6 +28,7 @@
 		DBFC77DB188DE4CE000181C6 /* MarketDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBFC77DA188DE4CE000181C6 /* MarketDetailViewController.m */; };
 		DBFC77DE188DE50B000181C6 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBFC77DD188DE50B000181C6 /* MainStoryboard.storyboard */; };
 		DBFC77E0188DE8F1000181C6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFC77DF188DE8F1000181C6 /* CoreLocation.framework */; };
+		DBFC77E3188E1667000181C6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFC77E2188E1667000181C6 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		DBFC77DA188DE4CE000181C6 /* MarketDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketDetailViewController.m; sourceTree = "<group>"; };
 		DBFC77DD188DE50B000181C6 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		DBFC77DF188DE8F1000181C6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		DBFC77E2188E1667000181C6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBFC77E3188E1667000181C6 /* MapKit.framework in Frameworks */,
 				DBFC77E0188DE8F1000181C6 /* CoreLocation.framework in Frameworks */,
 				DBFC7796188DE381000181C6 /* CoreGraphics.framework in Frameworks */,
 				DBFC7798188DE381000181C6 /* UIKit.framework in Frameworks */,
@@ -122,6 +125,7 @@
 		DBFC7792188DE381000181C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DBFC77E2188E1667000181C6 /* MapKit.framework */,
 				DBFC77DF188DE8F1000181C6 /* CoreLocation.framework */,
 				DBFC7793188DE381000181C6 /* Foundation.framework */,
 				DBFC7795188DE381000181C6 /* CoreGraphics.framework */,
@@ -523,6 +527,7 @@
 				DBFC77BE188DE381000181C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DBFC77BF188DE381000181C6 /* Build configuration list for PBXNativeTarget "IPSTests" */ = {
 			isa = XCConfigurationList;
@@ -531,6 +536,7 @@
 				DBFC77C1188DE381000181C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

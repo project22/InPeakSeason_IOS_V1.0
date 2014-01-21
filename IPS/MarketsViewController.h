@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-#include "Market.h"
+#import "Market.h"
+#import "MarketDetailViewController.h"
 
 @interface MarketsViewController : UIViewController <CLLocationManagerDelegate, UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UITableView *marketsTable;
 
 
 @end

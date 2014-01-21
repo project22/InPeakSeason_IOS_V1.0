@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import "Market.h"
 
-@interface MarketDetailViewController : UIViewController
+
+@interface MarketDetailViewController : UIViewController <MKMapViewDelegate>
+
+@property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UILabel *marketNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *outputAddressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *outputScheduleLabel;
+@property (strong, nonatomic) NSString *marketID;
+@property (strong, nonatomic) NSString *marketName;
 
 @end

@@ -37,9 +37,12 @@
     //get the markets nearby
     Market *marketObject = [[Market alloc]init];
         
-    NSDictionary * nearbyMarkets = [marketObject GetMarketsForLocation:currentLocation];
+    NSDictionary * nearbyMarkets = [marketObject getMarketsForLocation:currentLocation];
     markets = [nearbyMarkets objectForKey:@"results"];
     NSLog(@"from controller, the markets: %@", markets);
+    
+    
+    [self.marketsTable reloadData];
 
 }
 
@@ -60,14 +63,14 @@
 {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return markets.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -75,9 +78,27 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+
+    UILabel *marketName;
+    
+    marketName = (UILabel *)[cell viewWithTag:1];
+    marketName.text =  [NSString stringWithFormat:@"%@", [[markets objectAtIndex:indexPath.row] valueForKey:@"marketname"]];
+    
     
     return cell;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"toMarketDetail"]) {
+        NSIndexPath *indexPath = [self.marketsTable indexPathForSelectedRow];
+        MarketDetailViewController *destViewController = segue.destinationViewController;
+        destViewController.marketID = [NSString stringWithFormat:@"%@", [[markets objectAtIndex:indexPath.row] valueForKey:@"id"]];
+        destViewController.marketName = [NSString stringWithFormat:@"%@", [[markets objectAtIndex:indexPath.row] valueForKey:@"marketname"]];
+
+    }
 }
 
 #pragma mark - Get User Location
@@ -109,7 +130,8 @@
     [locationManager stopUpdatingLocation];
     
     if (currentLocation != nil) {
-        [self getMarketsList];
+        
+        [self getMarketsList];  //would be better if this was called by listening for an event of the currentlLocation being set.
     }
     
     
