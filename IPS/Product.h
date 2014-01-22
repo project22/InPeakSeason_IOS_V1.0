@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
 
 @interface Product : NSObject
+
+// return a dictionary with all the products and related data.
+// List
+- (NSMutableArray *)getLocalProductsInSeason:(CLLocation *)userLocation;
+
 
 @end
