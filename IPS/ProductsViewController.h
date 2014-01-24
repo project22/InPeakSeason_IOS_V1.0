@@ -12,4 +12,7 @@
 
 @interface ProductsViewController : UIViewController <UITableViewDelegate>
 
+@property (strong, nonatomic) NSArray *products;
+@property (weak, nonatomic) IBOutlet UITableView *productsTable;
+
 @end

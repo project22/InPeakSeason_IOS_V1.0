@@ -13,7 +13,7 @@
 
 @interface MarketsViewController : UIViewController <CLLocationManagerDelegate, UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *marketsTable;
+@property (strong, nonatomic) IBOutlet UITableView *marketsTable;
 
 
 @end

@@ -40,7 +40,7 @@
             [self.mapView addAnnotation:point];
             
             MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(aPlacemark.location.coordinate, 1000, 1000);
-            [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
+            [self.mapView setRegion:[self.mapView regionThatFits:region] animated:NO];
             
         }
     }];

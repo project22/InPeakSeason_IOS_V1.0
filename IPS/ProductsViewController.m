@@ -20,17 +20,27 @@
 {
     [super viewDidLoad];
 
-    Product *productObject = [[Product alloc] init ];
+    PFQuery *query = [PFQuery queryWithClassName:@"Product"];
     
-    NSMutableArray *productsArray = [[NSMutableArray alloc] initWithArray:[productObject getLocalProductsInSeason:nil]];
-    
-    NSLog(@"the array: %@", productsArray);
-    
-    // Do something with the found objects
-    for (PFObject *object in productsArray) {
-        NSLog(@"%@", object.objectId);
-    }
-}
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Successfully retrieved %lu scores.", (unsigned long)objects.count);
+            self.products = objects;
+            // Do something with the found objects
+            for (PFObject *object in self.products) {
+//                NSLog(@"%@", object.objectId);
+            }
+            for (int i = 0; i < self.products.count; i++){
+                NSLog(@"---@",  self.products[i]);
+            }
+           
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+           
+        }
+    }];}
 
 - (void)didReceiveMemoryWarning
 {
@@ -42,16 +52,16 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
+
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    NSLog(@"count: %lu", (unsigned long)self.products.count);
+    return self.products.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -59,10 +69,17 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
     
-    return cell;
-}
+    UILabel *productName;
+    
+    productName = (UILabel *)[cell viewWithTag:2];
+    productName.text =  [NSString stringWithFormat:@"%@", [[self.products objectAtIndex:indexPath.row] objectForKey:@"name"]];
+    
+    
+    return cell;}
 
 /*
 // Override to support conditional editing of the table view.
