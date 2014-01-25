@@ -59,17 +59,16 @@
     productName = (UILabel *)[cell viewWithTag:2];
     productName.text = [object objectForKey:@"name"];
     
-    UIImage *productImage;
-    productImage = (UIImage *)[cell viewWithTag:1];
+    UIImageView *productImage;
+    productImage = (UIImageView *)[cell viewWithTag:1];
     
-    PFImageView *imageView = [[PFImageView alloc] init];
-    imageView.image = [UIImage imageNamed:@"..."]; // placeholder image
-    imageView.file = (PFFile *)object[@"image"]; // remote image
-    
-    [imageView loadInBackground];
-    
-//    productImage = [UIImage imageWithData:imageView.file];
-
+    PFFile *imageFile = [object objectForKey:@"image"];
+    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error){
+        if (!error) {
+            UIImage *MyPicture = [UIImage imageWithData:data];
+            productImage.image = MyPicture;
+        }
+    }];
 
     
     return cell;
