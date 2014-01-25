@@ -55,13 +55,22 @@
     }
     
     // Configure the cell to show todo item with a priority at the bottom
-    cell.textLabel.text = [object objectForKey:@"text"];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@" %@",
-                                 [object objectForKey:@"name"]];
+    UILabel *productName;
+    productName = (UILabel *)[cell viewWithTag:2];
+    productName.text = [object objectForKey:@"name"];
     
-//    UIImage *productImage;
-//    productImage = (UIImage *)[cell viewWithTag:1];
-//    productImage.text =  [NSString stringWithFormat:@"%@", [[markets objectAtIndex:indexPath.row] valueForKey:@"marketname"]];
+    UIImage *productImage;
+    productImage = (UIImage *)[cell viewWithTag:1];
+    
+    PFImageView *imageView = [[PFImageView alloc] init];
+    imageView.image = [UIImage imageNamed:@"..."]; // placeholder image
+    imageView.file = (PFFile *)object[@"image"]; // remote image
+    
+    [imageView loadInBackground];
+    
+//    productImage = [UIImage imageWithData:imageView.file];
+
+
     
     return cell;
 }
