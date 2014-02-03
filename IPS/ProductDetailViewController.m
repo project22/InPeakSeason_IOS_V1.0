@@ -19,6 +19,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.productNameLabel.text = [self.exam objectForKey:@"name"];
+    self.navigationItem.title = [self.exam objectForKey:@"name"];
+    self.triedProductQuestion.text = [NSString stringWithFormat:@"Tried local %@ lately?", [self.exam objectForKey: @"name"]];
+    
+  
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -27,4 +33,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)ratingSliderChange:(id)sender {
+      NSLog(@"Slider: %f", self.ratingSlider.value);
+}
 @end

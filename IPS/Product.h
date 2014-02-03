@@ -11,9 +11,6 @@
 
 @interface Product : NSObject
 
-// return a dictionary with all the products and related data.
-// List
-- (NSMutableArray *)getLocalProductsInSeason:(CLLocation *)userLocation;
-
+- (NSDictionary *)getProductDetails:(NSString *)productName;
 
 @end

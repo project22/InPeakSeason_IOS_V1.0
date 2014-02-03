@@ -48,9 +48,24 @@
     self.navigationItem.title = self.marketName;
 
     self.marketNameLabel.text = self.marketName;
+    self.marketNameLabel.numberOfLines = 0;
+    [self.marketNameLabel sizeToFit];
+    
     self.outputAddressLabel.text = [marketDetails  valueForKeyPath:@"marketdetails.Address"];
-    self.outputProductsLabel.text = [marketDetails  valueForKeyPath:@"marketdetails.Products"];
+    self.outputAddressLabel.numberOfLines = 0;
+    [self.outputAddressLabel sizeToFit];
+
     self.outputScheduleLabel.text = [marketDetails  valueForKeyPath:@"marketdetails.Schedule"];
+    self.outputScheduleLabel.numberOfLines = 0;
+    [self.outputScheduleLabel sizeToFit];
+    
+    
+    
+    self.outputProductsLabel.numberOfLines = 0;
+    [self.outputProductsLabel sizeToFit];
+    self.outputProductsLabel.text = [marketDetails  valueForKeyPath:@"marketdetails.Products"];
+    
+
     
 }
 

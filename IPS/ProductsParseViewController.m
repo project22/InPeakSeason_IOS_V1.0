@@ -57,6 +57,8 @@
     // Configure the cell to show todo item with a priority at the bottom
     UILabel *productName;
     productName = (UILabel *)[cell viewWithTag:2];
+//    productName.numberOfLines = 0;
+//    [productName sizeToFit];
     productName.text = [object objectForKey:@"name"];
     
     UIImageView *productImage;
@@ -73,4 +75,22 @@
     
     return cell;
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Check that a new transition has been requested to the DetailViewController and prepares for it
+    if ([segue.identifier isEqualToString:@"toProductDetail"]){
+        
+        // Capture the object (e.g. exam) the user has selected from the list
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        PFObject *object = [self.objects objectAtIndex:indexPath.row];
+        
+        // Set destination view controller to DetailViewController to avoid the NavigationViewController in the middle (if you have it embedded into a navigation controller, if not ignore that part)
+
+        ProductDetailViewController *detailViewController = [segue destinationViewController];
+        detailViewController.exam = object;
+    }
+}
+
+
 @end
