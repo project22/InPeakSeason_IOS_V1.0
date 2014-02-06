@@ -10,4 +10,6 @@
 
 @interface Recipe : NSObject
 
+- (NSDictionary *)getRecipes:(NSString *)productName;
+
 @end

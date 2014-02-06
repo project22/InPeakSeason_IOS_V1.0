@@ -61,14 +61,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
+
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
+
     // Return the number of rows in the section.
     return markets.count;
 }
@@ -83,9 +83,20 @@
     }
 
     UILabel *marketName;
-    
     marketName = (UILabel *)[cell viewWithTag:1];
-    marketName.text =  [NSString stringWithFormat:@"%@", [[markets objectAtIndex:indexPath.row] valueForKey:@"marketname"]];
+    
+    NSString * rawMarketName = [NSString stringWithFormat:@"%@", [[markets objectAtIndex:indexPath.row] valueForKey:@"marketname"]];
+    NSString  *trimmedMarketName = [rawMarketName substringFromIndex:4];
+    
+    marketName.text = trimmedMarketName;
+    
+    //output the distance label
+    UILabel * marketDistanceLabel;
+    marketDistanceLabel = (UILabel *)[cell viewWithTag:2];
+    
+    NSArray* parts = [rawMarketName componentsSeparatedByString: @" "];
+    NSString* marketDistance = [NSString stringWithFormat:@"%@ miles away", [parts objectAtIndex: 0]];
+    marketDistanceLabel.text = marketDistance;
     
     
     return cell;
@@ -96,7 +107,11 @@
         NSIndexPath *indexPath = [self.marketsTable indexPathForSelectedRow];
         MarketDetailViewController *destViewController = segue.destinationViewController;
         destViewController.marketID = [NSString stringWithFormat:@"%@", [[markets objectAtIndex:indexPath.row] valueForKey:@"id"]];
-        destViewController.marketName = [NSString stringWithFormat:@"%@", [[markets objectAtIndex:indexPath.row] valueForKey:@"marketname"]];
+        
+        NSString * rawMarketName = [NSString stringWithFormat:@"%@", [[markets objectAtIndex:indexPath.row] valueForKey:@"marketname"]];
+        NSString  *trimmedMarketName = [rawMarketName substringFromIndex:4];
+        
+        destViewController.marketName = trimmedMarketName;
 
     }
 }

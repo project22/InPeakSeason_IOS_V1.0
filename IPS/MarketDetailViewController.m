@@ -51,7 +51,7 @@
     self.marketNameLabel.numberOfLines = 0;
     [self.marketNameLabel sizeToFit];
     
-    self.outputAddressLabel.text = [marketDetails  valueForKeyPath:@"marketdetails.Address"];
+    self.outputAddressLabel.text = [marketDetails valueForKeyPath:@"marketdetails.Address"];
     self.outputAddressLabel.numberOfLines = 0;
     [self.outputAddressLabel sizeToFit];
 
@@ -65,6 +65,24 @@
     [self.outputProductsLabel sizeToFit];
     self.outputProductsLabel.text = [marketDetails  valueForKeyPath:@"marketdetails.Products"];
     
+    
+    
+    NSString *unescaped = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/streetview?size=400x400&location=%@&fov=90&heading=235&pitch=10&sensor=false" , [marketDetails valueForKeyPath:@"marketdetails.Address"]];
+    
+    NSString *charactersToEscape = @" ";
+    NSCharacterSet *allowedCharacters = [[NSCharacterSet characterSetWithCharactersInString:charactersToEscape] invertedSet];
+    NSString *encodedString = [unescaped stringByAddingPercentEncodingWithAllowedCharacters:allowedCharacters];
+    NSString *URLString = encodedString;
+    
+    NSLog(@"URLString: %@", URLString);
+    
+    NSURL *imageURL = [NSURL URLWithString: URLString];
+    NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+    UIImage *image = [UIImage imageWithData:imageData];
+    self.marketStreetView.image = image;
+    
+    
+//    http://maps.googleapis.com/maps/api/streetview?size=400x400&location=40.720032,-73.988354&fov=90&heading=235&pitch=10&sensor=false
 
     
 }

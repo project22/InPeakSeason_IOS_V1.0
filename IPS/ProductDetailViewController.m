@@ -10,9 +10,12 @@
 
 @interface ProductDetailViewController ()
 
+
 @end
 
-@implementation ProductDetailViewController
+@implementation ProductDetailViewController {
+    NSArray *recipeArray;
+}
 
 
 - (void)viewDidLoad
@@ -23,7 +26,13 @@
     self.navigationItem.title = [self.exam objectForKey:@"name"];
     self.triedProductQuestion.text = [NSString stringWithFormat:@"Tried local %@ lately?", [self.exam objectForKey: @"name"]];
     
-  
+    Recipe *recipes = [[Recipe alloc] init];
+    
+    NSDictionary *recipeDictionary = [recipes getRecipes: [self.exam objectForKey:@"name"]];
+    
+    recipeArray = [recipeDictionary objectForKey:@"recipes"];
+    NSLog(@"from controller, the recipes are: %@", recipeArray);
+
 
 }
 

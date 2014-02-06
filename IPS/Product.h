@@ -11,6 +11,6 @@
 
 @interface Product : NSObject
 
-- (NSDictionary *)getProductDetails:(NSString *)productName;
+
 
 @end
