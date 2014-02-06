@@ -72,10 +72,8 @@
     NSString *charactersToEscape = @" ";
     NSCharacterSet *allowedCharacters = [[NSCharacterSet characterSetWithCharactersInString:charactersToEscape] invertedSet];
     NSString *encodedString = [unescaped stringByAddingPercentEncodingWithAllowedCharacters:allowedCharacters];
-    NSString *URLString = encodedString;
     
-    NSLog(@"URLString: %@", URLString);
-    
+    NSString *URLString = encodedString;    
     NSURL *imageURL = [NSURL URLWithString: URLString];
     NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
     UIImage *image = [UIImage imageWithData:imageData];

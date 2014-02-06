@@ -18,9 +18,12 @@
     NSDictionary *relatedRecipes;
     
     //dbeba36bca60ed831f5afa391a4a1cc8
+    NSString *charactersToEscape = @" ";
+    NSCharacterSet *allowedCharacters = [[NSCharacterSet characterSetWithCharactersInString:charactersToEscape] invertedSet];
+    NSString *productNameReformatted = [productName stringByAddingPercentEncodingWithAllowedCharacters:allowedCharacters];
     
     //run the JSON query to USDA api
-    NSString *jsonString = [[NSString alloc]initWithFormat: @"http://food2fork.com/api/search?key=dbeba36bca60ed831f5afa391a4a1cc8&q=%@", productName ];
+    NSString *jsonString = [[NSString alloc]initWithFormat: @"http://food2fork.com/api/search?key=dbeba36bca60ed831f5afa391a4a1cc8&q=%@", productNameReformatted ];
     NSURL *jsonURL = [NSURL URLWithString:jsonString];
     
     NSData *jsonData = [NSData dataWithContentsOfURL:jsonURL];
