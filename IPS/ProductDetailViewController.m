@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) IBOutlet UIScrollView *recipeScrollView;
 
+- (void)openRecipeURL:(NSString*)URL;
 
 @end
 
@@ -25,6 +26,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    
+    
     self.productNameLabel.text = [self.exam objectForKey:@"name"];
     self.navigationItem.title = [self.exam objectForKey:@"name"];
     self.triedProductQuestion.text = [NSString stringWithFormat:@"Tried local %@ lately?", [self.exam objectForKey: @"name"]];
@@ -37,7 +41,7 @@
     NSLog(@"from controller, the recipes are: %@", recipeArray);
 
     //output recipes into scroll view
-   
+    self.recipeScrollView.contentSize = CGSizeMake(self.recipeScrollView.frame.size.width * recipeArray.count, self.recipeScrollView.frame.size.height);
     
     for (int i = 0; i < recipeArray.count; i++) {
         CGRect frame;
@@ -58,20 +62,31 @@
         [recipeImage setClipsToBounds:YES];
         [subview addSubview:recipeImage];
         
-        UILabel *recipeTitle =[[UILabel alloc] initWithFrame:CGRectMake(20,200,200,40)];
-        recipeTitle.text = [[recipeArray objectAtIndex:i] valueForKey:@"title"];
+        UILabel *recipeTitle =[[UILabel alloc] initWithFrame:CGRectMake(10,190,self.recipeScrollView.frame.size.width -20, 40)];
+        recipeTitle.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.7f];
+        recipeTitle.textAlignment = NSTextAlignmentCenter;
+        
+        NSString *recipeName = [[recipeArray objectAtIndex:i] valueForKey:@"title"];
+       
+        
+        recipeTitle.text =  [recipeName stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
         
         [subview addSubview:recipeTitle];
-    
-//        subview.backgroundColor = [colors objectAtIndex:i];
+        
+        UIButton *URLbutton = [[UIButton alloc] initWithFrame:CGRectMake(200, 10, 100, 20)];
+        URLbutton.backgroundColor = [UIColor orangeColor];
+        [URLbutton setTitle:@"View Recipe" forState:UIControlStateNormal];
+        
+        [URLbutton addTarget:self action:@selector(openRecipeURL:) forControlEvents:UIControlEventTouchUpInside];
+        [subview addSubview:URLbutton];
+
         [self.recipeScrollView addSubview:subview];
         
-       
     }
-    
-     self.recipeScrollView.contentSize = CGSizeMake(self.recipeScrollView.frame.size.width * recipeArray.count, self.recipeScrollView.frame.size.height);
-    
+}
 
+- (void)openRecipeURL:(UIButton *)sender {
+    NSLog(@"Sender: %@", sender);
 }
 
 - (void)didReceiveMemoryWarning

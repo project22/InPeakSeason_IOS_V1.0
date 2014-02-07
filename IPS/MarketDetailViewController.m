@@ -23,6 +23,9 @@
 	// Do any additional setup after loading the view.
     self.mapView.delegate = self;
     
+    [self.mainScrollView setContentSize:CGSizeMake(320, 1000)];
+    [self.mainScrollView setScrollEnabled:YES];
+    
     Market *market = [[Market alloc] init];
     NSDictionary *marketDetails = [market getMarketDetails:self.marketID];
     NSLog(@"Market details are: %@", marketDetails);
@@ -42,6 +45,24 @@
             MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(aPlacemark.location.coordinate, 1000, 1000);
             [self.mapView setRegion:[self.mapView regionThatFits:region] animated:NO];
             
+            //Set a few MKMapView Properties to allow pitch, building view, points of interest, and zooming.
+            self.mapView.pitchEnabled = YES;
+            self.mapView.showsBuildings = YES;
+            self.mapView.showsPointsOfInterest = YES;
+            self.mapView.zoomEnabled = YES;
+            self.mapView.scrollEnabled = YES;
+            self.mapView.zoomEnabled = YES;
+            
+            
+            //set up initial location
+            CLLocationCoordinate2D ground = CLLocationCoordinate2DMake(point.coordinate.latitude, point.coordinate.longitude);
+            CLLocationCoordinate2D eye = CLLocationCoordinate2DMake(point.coordinate.latitude - .01000, point.coordinate.longitude);
+            MKMapCamera *mapCamera = [MKMapCamera cameraLookingAtCenterCoordinate:ground
+                                                                fromEyeCoordinate:eye
+                                                                      eyeAltitude:50];
+            
+            self.mapView.camera = mapCamera;
+            
         }
     }];
     
@@ -59,12 +80,9 @@
     self.outputScheduleLabel.numberOfLines = 0;
     [self.outputScheduleLabel sizeToFit];
     
-    
-    
+    self.outputProductsLabel.text = [marketDetails  valueForKeyPath:@"marketdetails.Products"];
     self.outputProductsLabel.numberOfLines = 0;
     [self.outputProductsLabel sizeToFit];
-    self.outputProductsLabel.text = [marketDetails  valueForKeyPath:@"marketdetails.Products"];
-    
     
     
     NSString *unescaped = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/streetview?size=400x400&location=%@&fov=90&heading=235&pitch=10&sensor=false" , [marketDetails valueForKeyPath:@"marketdetails.Address"]];

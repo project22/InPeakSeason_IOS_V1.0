@@ -25,7 +25,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    self.marketsTable.hidden = YES;
     //get the users location
     [self getUserLocation];
     
@@ -41,11 +41,10 @@
     markets = [nearbyMarkets objectForKey:@"results"];
     NSLog(@"from controller, the markets: %@", markets);
     
-    
+    self.marketsTable.hidden = NO;
     [self.marketsTable reloadData];
 
 }
-
 
 
 - (void)didReceiveMemoryWarning
@@ -53,8 +52,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 
 #pragma mark - Table view data source
@@ -100,7 +97,9 @@
     
     
     return cell;
+    
 }
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"toMarketDetail"]) {

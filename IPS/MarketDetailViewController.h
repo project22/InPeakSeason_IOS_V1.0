@@ -24,7 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *outputProductsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *outputScheduleLabel;
 
-
+@property (strong, nonatomic) IBOutlet UIScrollView *mainScrollView;
 
 
 @end

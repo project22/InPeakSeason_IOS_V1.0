@@ -16,6 +16,18 @@
 
 @implementation ProductsParseViewController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    UINavigationBar *navBar = self.navigationController.navigationBar;
+    UIImage *image = [UIImage imageNamed:@"peak-thumbnail.png"];
+    [navBar setBackgroundImage:image forBarMetrics:(UIBarMetricsDefault)];
+    
+    
+}
+
+
 - (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     if (self) {
@@ -91,6 +103,8 @@
         detailViewController.exam = object;
     }
 }
+
+
 
 
 @end
