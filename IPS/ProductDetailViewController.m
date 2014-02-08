@@ -7,8 +7,11 @@
 //
 
 #import "ProductDetailViewController.h"
+#import "RecipeDetailViewController.h"
 
 @interface ProductDetailViewController ()
+
+
 
 @property (strong, nonatomic) IBOutlet UIScrollView *recipeScrollView;
 
@@ -18,7 +21,7 @@
 
 @implementation ProductDetailViewController {
     NSArray *recipeArray;
-    
+    long selectedRecipeIndex;
 }
 
 
@@ -51,16 +54,39 @@
         
         UIView *subview = [[UIView alloc] initWithFrame:frame];
         
-        NSString * recipeImageURL = [NSString stringWithFormat:@"%@", [[recipeArray objectAtIndex:i] valueForKey:@"image_url"]];
-        NSURL *imageURL = [NSURL URLWithString: recipeImageURL];
-        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
-        UIImage *image = [UIImage imageWithData:imageData];
-        
         UIImageView *recipeImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.recipeScrollView.frame.size.width, self.recipeScrollView.frame.size.height)];
-        [recipeImage setImage:image];
+        
         recipeImage.contentMode = UIViewContentModeScaleAspectFill;
         [recipeImage setClipsToBounds:YES];
         [subview addSubview:recipeImage];
+        
+        
+        NSString * recipeImageURL = [NSString stringWithFormat:@"%@", [[recipeArray objectAtIndex:i] valueForKey:@"image_url"]];
+        NSURL *imageURL = [NSURL URLWithString: recipeImageURL];
+        
+
+        NSURLRequest* request = [NSURLRequest requestWithURL:imageURL];
+        
+        
+        [NSURLConnection sendAsynchronousRequest:request
+                                           queue:[NSOperationQueue mainQueue]
+                               completionHandler:^(NSURLResponse * response,
+                                                   NSData * data,
+                                                   NSError * error) {
+                                   if (!error){
+                                       UIImage* image = [[UIImage alloc] initWithData:data];
+                                       [recipeImage setImage:image];
+                                       // do whatever you want with image
+                                   }
+                                   
+                               }];
+        
+        
+        
+//        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+//        UIImage *image = [UIImage imageWithData:imageData];
+        
+        
         
         UILabel *recipeTitle =[[UILabel alloc] initWithFrame:CGRectMake(10,190,self.recipeScrollView.frame.size.width -20, 40)];
         recipeTitle.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.7f];
@@ -76,6 +102,7 @@
         UIButton *URLbutton = [[UIButton alloc] initWithFrame:CGRectMake(200, 10, 100, 20)];
         URLbutton.backgroundColor = [UIColor orangeColor];
         [URLbutton setTitle:@"View Recipe" forState:UIControlStateNormal];
+        URLbutton.tag = i;
         
         [URLbutton addTarget:self action:@selector(openRecipeURL:) forControlEvents:UIControlEventTouchUpInside];
         [subview addSubview:URLbutton];
@@ -86,7 +113,27 @@
 }
 
 - (void)openRecipeURL:(UIButton *)sender {
-    NSLog(@"Sender: %@", sender);
+    
+    UIButton *button = (UIButton*) sender;
+    NSLog(@"the tag of button is %ld", (long)button.tag);
+    selectedRecipeIndex = button.tag;
+    
+    
+    [self performSegueWithIdentifier:@"openRecipe" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"openRecipe"])
+    {
+        NSLog(@"Prepare for segue");
+        
+        RecipeDetailViewController *recipeDetail = segue.destinationViewController;
+        
+        recipeDetail.recipeURL = [[recipeArray objectAtIndex:selectedRecipeIndex] valueForKey:@"source_url"];
+        
+        recipeDetail.recipeTitle = [[recipeArray objectAtIndex:selectedRecipeIndex] valueForKey:@"title"];
+    }
 }
 
 - (void)didReceiveMemoryWarning

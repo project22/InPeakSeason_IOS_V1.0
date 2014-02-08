@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB4D4B0318A59CC1004F5787 /* RecipeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4D4B0218A59CC1004F5787 /* RecipeDetailViewController.m */; };
 		DB56BCDD1893270100AF2289 /* ProductsParseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB56BCDC1893270100AF2289 /* ProductsParseViewController.m */; };
 		DBFC7794188DE381000181C6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFC7793188DE381000181C6 /* Foundation.framework */; };
 		DBFC7796188DE381000181C6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFC7795188DE381000181C6 /* CoreGraphics.framework */; };
@@ -52,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DB4D4B0118A59CC1004F5787 /* RecipeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeDetailViewController.h; sourceTree = "<group>"; };
+		DB4D4B0218A59CC1004F5787 /* RecipeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeDetailViewController.m; sourceTree = "<group>"; };
 		DB56BCDB1893270100AF2289 /* ProductsParseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductsParseViewController.h; sourceTree = "<group>"; };
 		DB56BCDC1893270100AF2289 /* ProductsParseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductsParseViewController.m; sourceTree = "<group>"; };
 		DBFC7790188DE381000181C6 /* IPS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IPS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -242,6 +245,8 @@
 				DBFC77DA188DE4CE000181C6 /* MarketDetailViewController.m */,
 				DB56BCDB1893270100AF2289 /* ProductsParseViewController.h */,
 				DB56BCDC1893270100AF2289 /* ProductsParseViewController.m */,
+				DB4D4B0118A59CC1004F5787 /* RecipeDetailViewController.h */,
+				DB4D4B0218A59CC1004F5787 /* RecipeDetailViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -367,6 +372,7 @@
 				DBFC77D8188DE4B6000181C6 /* ProductDetailViewController.m in Sources */,
 				DBFC77C6188DE3F4000181C6 /* Market.m in Sources */,
 				DBFC77D2188DE46B000181C6 /* MarketsViewController.m in Sources */,
+				DB4D4B0318A59CC1004F5787 /* RecipeDetailViewController.m in Sources */,
 				DBFC77CF188DE453000181C6 /* ProductsViewController.m in Sources */,
 				DBFC77C9188DE402000181C6 /* Recipe.m in Sources */,
 			);

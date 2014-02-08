@@ -200,11 +200,42 @@
                         <outlet property="ratingSlider" destination="ve7-c5-3Yj" id="2Ic-4S-hfx"/>
                         <outlet property="recipeScrollView" destination="3ws-tM-iHg" id="tk8-vu-GbK"/>
                         <outlet property="triedProductQuestion" destination="SM9-Eg-QKK" id="zpG-qd-lIQ"/>
+                        <segue destination="BEz-JA-i11" kind="push" identifier="openRecipe" id="z8k-j0-2bW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ui-bH-Szz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1224" y="-53"/>
+        </scene>
+        <!--Recipe Detail View Controller-->
+        <scene sceneID="Uuk-ql-fqt">
+            <objects>
+                <viewController id="BEz-JA-i11" customClass="RecipeDetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VhI-Qy-oov">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" id="so0-x9-PB5">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.86256377549999996" green="0.86256377549999996" blue="0.86256377549999996" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="cAR-nq-Rcw">
+                                <rect key="frame" x="142" y="156" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.86256377549999996" green="0.86256377549999996" blue="0.86256377549999996" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="zNZ-3X-dof"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="cAR-nq-Rcw" id="wTz-C3-Pgd"/>
+                        <outlet property="webView" destination="so0-x9-PB5" id="hOv-gf-lig"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="57n-v4-beL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1636" y="-49"/>
         </scene>
         <!--Market Detail View Controller - Market Name-->
         <scene sceneID="lmO-xT-c1E">
