@@ -34,7 +34,6 @@
     
     self.productNameLabel.text = [self.exam objectForKey:@"name"];
     self.navigationItem.title = [self.exam objectForKey:@"name"];
-    self.triedProductQuestion.text = [NSString stringWithFormat:@"Tried local %@ lately?", [self.exam objectForKey: @"name"]];
     
     Recipe *recipes = [[Recipe alloc] init];
     
@@ -80,12 +79,6 @@
                                    }
                                    
                                }];
-        
-        
-        
-//        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
-//        UIImage *image = [UIImage imageWithData:imageData];
-        
         
         
         UILabel *recipeTitle =[[UILabel alloc] initWithFrame:CGRectMake(10,190,self.recipeScrollView.frame.size.width -20, 40)];
@@ -142,7 +135,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)ratingSliderChange:(id)sender {
-      NSLog(@"Slider: %f", self.ratingSlider.value);
-}
+
 @end

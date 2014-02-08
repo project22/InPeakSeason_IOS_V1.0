@@ -27,8 +27,18 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.webView.hidden = YES;
     self.navigationItem.title = self.recipeTitle;
 //    self.navigationController.navigationBar.topItem.title = @"";
+    
+    //favorite button
+    UIBarButtonItem *favButton = [[UIBarButtonItem alloc]
+                                   initWithTitle:@"+"
+                                   style:UIBarButtonItemStyleBordered
+                                   target:self
+                                   action:@selector(addFavorite)];
+    self.navigationItem.rightBarButtonItem = favButton;
+    self.webView.delegate = self;
     
     NSLog(@"from the detail the URL is %@", self.recipeURL);
     NSString *urlString = self.recipeURL;
@@ -42,9 +52,14 @@
      }];
 }
 
+- (void)addFavorite {
+    NSLog(@"add favorite");
+}
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     NSLog(@"Web page loaded");
     self.activityIndicator.hidden = YES;
+    self.webView.hidden = NO;
 }
 
 - (void)didReceiveMemoryWarning
