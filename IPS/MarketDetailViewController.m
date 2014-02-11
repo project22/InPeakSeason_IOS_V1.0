@@ -47,11 +47,12 @@
             
             //Set a few MKMapView Properties to allow pitch, building view, points of interest, and zooming.
             self.mapView.pitchEnabled = YES;
-            self.mapView.showsBuildings = YES;
+//            self.mapView.showsBuildings = YES;
+            [self.mapView setShowsBuildings:YES];
             self.mapView.showsPointsOfInterest = YES;
             self.mapView.zoomEnabled = YES;
             self.mapView.scrollEnabled = YES;
-            self.mapView.zoomEnabled = YES;
+           
             
             
             //set up initial location

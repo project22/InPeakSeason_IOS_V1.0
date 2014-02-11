@@ -13,21 +13,51 @@
 
 - (NSDictionary *)getMarketsForLocation:(CLLocation *)userLocation {
     
-    NSDictionary *marketDictionary;
+    NSMutableDictionary *marketDictionary;
     
     if (userLocation != nil) {
-        NSString *lat = [NSString stringWithFormat:@"%.8f", userLocation.coordinate.latitude];
-        NSString *lng = [NSString stringWithFormat:@"%.8f", userLocation.coordinate.longitude];
+
+        CLLocationCoordinate2D coordinate = [userLocation coordinate];
+        PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:coordinate.latitude
+                                                      longitude:coordinate.longitude];
     
+        PFQuery *marketQuery = [PFQuery queryWithClassName:@"Market"];
+        [marketQuery whereKey:@"GeoPoint" nearGeoPoint:geoPoint withinMiles:5.0];
+        
+        [marketQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                [marketDictionary setObject:objects forKey:@"results"];
+                NSLog(@"results: %@", [marketDictionary objectForKey:@"results"]);
+                
+                for (PFObject *object in objects) {
+//                    NSLog(@"Market name: %@", [object objectForKey:@"MarketName"]);
+                    
+//                    GeoPointAnnotation *geoPointAnnotation = [[GeoPointAnnotation alloc]
+//                                                              initWithObject:object];
+//                    [self.mapView addAnnotation:geoPointAnnotation];
+                }
+            }
+        }];
+        
+        
+        // Run query on Parse DB for markets
+//        PFQuery *marketQuery = [PFQuery queryWithClassName:@"Market"];
+//        [seasonQuery whereKey:@"month" equalTo:@"2"];
+//        
+//        
+//        [seasonQuery whereKey:@"quality" greaterThan:[NSNumber numberWithInt:3]];
+        
         //run the JSON query to USDA api
-        NSString *jsonString = [[NSString alloc]initWithFormat: @"http://search.ams.usda.gov/farmersmarkets/v1/data.svc/locSearch?lat=%@&lng=%@", lat, lng ];
-        NSURL *jsonURL = [NSURL URLWithString:jsonString];
-    
-        NSData *jsonData = [NSData dataWithContentsOfURL:jsonURL];
-        NSError *fetchMarketsError;
-        marketDictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&fetchMarketsError];
+//        NSString *jsonString = [[NSString alloc]initWithFormat: @"http://search.ams.usda.gov/farmersmarkets/v1/data.svc/locSearch?lat=%@&lng=%@", lat, lng ];
+//        NSURL *jsonURL = [NSURL URLWithString:jsonString];
+//    
+//        NSData *jsonData = [NSData dataWithContentsOfURL:jsonURL];
+//        NSError *fetchMarketsError;
+//        marketDictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&fetchMarketsError];
         
 //        NSLog(@"NS dictionary %@", marketDictionary);
+        //populate Parse DB with new records found
+        
     }
     
     return marketDictionary;

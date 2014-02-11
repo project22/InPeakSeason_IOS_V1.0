@@ -10,9 +10,11 @@
 #import <Parse/Parse.h>
 #import "Recipe.h"
 
+
 @interface ProductDetailViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UILabel *productNameLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *productImage;
 
 @property (weak, nonatomic) PFObject *exam;
 

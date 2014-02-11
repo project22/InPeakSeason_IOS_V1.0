@@ -82,7 +82,7 @@
     UILabel *marketName;
     marketName = (UILabel *)[cell viewWithTag:1];
     
-    NSString * rawMarketName = [NSString stringWithFormat:@"%@", [[markets objectAtIndex:indexPath.row] valueForKey:@"marketname"]];
+    NSString * rawMarketName = [NSString stringWithFormat:@"%@", [[markets objectAtIndex:indexPath.row] valueForKey:@"MarketName"]];
     NSString  *trimmedMarketName = [rawMarketName substringFromIndex:4];
     
     marketName.text = trimmedMarketName;

@@ -37,6 +37,7 @@
                                    style:UIBarButtonItemStyleBordered
                                    target:self
                                    action:@selector(addFavorite)];
+    
     self.navigationItem.rightBarButtonItem = favButton;
     self.webView.delegate = self;
     

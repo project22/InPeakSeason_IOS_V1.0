@@ -20,8 +20,8 @@
 {
     [super viewDidLoad];
     
-    UINavigationBar *navBar = self.navigationController.navigationBar;
-    UIImage *image = [UIImage imageNamed:@"peak-thumbnail.png"];
+//    UINavigationBar *navBar = self.navigationController.navigationBar;
+//    UIImage *image = [UIImage imageNamed:@"peak-thumbnail.png"];
 //    [navBar setBackgroundImage:image forBarMetrics:(UIBarMetricsDefault)];
     
     
@@ -31,7 +31,7 @@
 - (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     if (self) {
-        // This table displays items in the Todo class
+      
         self.className = @"Product";
         self.pullToRefreshEnabled = YES;
         self.paginationEnabled = NO;
@@ -41,7 +41,14 @@
 }
 
 - (PFQuery *)queryForTable {
+
+    PFQuery *seasonQuery = [PFQuery queryWithClassName:@"Season"];
+    [seasonQuery whereKey:@"month" equalTo:@"2"];
+    [seasonQuery whereKey:@"quality" greaterThan:[NSNumber numberWithInt:3]];
+    
+    
     PFQuery *query = [PFQuery queryWithClassName:@"Product"];
+    [query whereKey:@"Season" matchesQuery:seasonQuery];
     
     // If no objects are loaded in memory, we look to the cache
     // first to fill the table and then subsequently do a query
@@ -83,7 +90,7 @@
             productImage.image = MyPicture;
         }
     }];
-
+    [productImage setClipsToBounds:YES];
     
     return cell;
 }

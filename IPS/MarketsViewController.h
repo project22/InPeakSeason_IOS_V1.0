@@ -10,6 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "Market.h"
 #import "MarketDetailViewController.h"
+#import <Parse/Parse.h>
 
 @interface MarketsViewController : UIViewController <CLLocationManagerDelegate, UITableViewDelegate>
 

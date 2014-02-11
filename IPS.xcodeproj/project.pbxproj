@@ -8,7 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		DB4D4B0318A59CC1004F5787 /* RecipeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4D4B0218A59CC1004F5787 /* RecipeDetailViewController.m */; };
+		DB4D4B0518A5DFB3004F5787 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB4D4B0418A5DFB3004F5787 /* FacebookSDK.framework */; };
+		DB4D4B0818A7FC78004F5787 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4D4B0718A7FC78004F5787 /* SignInViewController.m */; };
+		DB4D4B0B18A80EF3004F5787 /* FavoriteRecipesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4D4B0A18A80EF3004F5787 /* FavoriteRecipesViewController.m */; };
 		DB56BCDD1893270100AF2289 /* ProductsParseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB56BCDC1893270100AF2289 /* ProductsParseViewController.m */; };
+		DBAF42A818A9AF7800BB46CD /* MarketsParseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBAF42A718A9AF7800BB46CD /* MarketsParseViewController.m */; };
+		DBAF42B018A9B7FB00BB46CD /* GetLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = DBAF42AF18A9B7FB00BB46CD /* GetLocation.m */; };
 		DBFC7794188DE381000181C6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFC7793188DE381000181C6 /* Foundation.framework */; };
 		DBFC7796188DE381000181C6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFC7795188DE381000181C6 /* CoreGraphics.framework */; };
 		DBFC7798188DE381000181C6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFC7797188DE381000181C6 /* UIKit.framework */; };
@@ -55,8 +60,17 @@
 /* Begin PBXFileReference section */
 		DB4D4B0118A59CC1004F5787 /* RecipeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeDetailViewController.h; sourceTree = "<group>"; };
 		DB4D4B0218A59CC1004F5787 /* RecipeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeDetailViewController.m; sourceTree = "<group>"; };
+		DB4D4B0418A5DFB3004F5787 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		DB4D4B0618A7FC78004F5787 /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
+		DB4D4B0718A7FC78004F5787 /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
+		DB4D4B0918A80EF3004F5787 /* FavoriteRecipesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteRecipesViewController.h; sourceTree = "<group>"; };
+		DB4D4B0A18A80EF3004F5787 /* FavoriteRecipesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteRecipesViewController.m; sourceTree = "<group>"; };
 		DB56BCDB1893270100AF2289 /* ProductsParseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductsParseViewController.h; sourceTree = "<group>"; };
 		DB56BCDC1893270100AF2289 /* ProductsParseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductsParseViewController.m; sourceTree = "<group>"; };
+		DBAF42A618A9AF7800BB46CD /* MarketsParseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketsParseViewController.h; sourceTree = "<group>"; };
+		DBAF42A718A9AF7800BB46CD /* MarketsParseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketsParseViewController.m; sourceTree = "<group>"; };
+		DBAF42AE18A9B7FB00BB46CD /* GetLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetLocation.h; sourceTree = "<group>"; };
+		DBAF42AF18A9B7FB00BB46CD /* GetLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetLocation.m; sourceTree = "<group>"; };
 		DBFC7790188DE381000181C6 /* IPS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IPS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBFC7793188DE381000181C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DBFC7795188DE381000181C6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -117,6 +131,7 @@
 				DBFC77E9188F71EE000181C6 /* CFNetwork.framework in Frameworks */,
 				DBFC77E7188F71E5000181C6 /* AudioToolbox.framework in Frameworks */,
 				DBFC77E3188E1667000181C6 /* MapKit.framework in Frameworks */,
+				DB4D4B0518A5DFB3004F5787 /* FacebookSDK.framework in Frameworks */,
 				DBFC7798188DE381000181C6 /* UIKit.framework in Frameworks */,
 				DBFC77E5188F71A0000181C6 /* Parse.framework in Frameworks */,
 				DBFC7794188DE381000181C6 /* Foundation.framework in Frameworks */,
@@ -136,6 +151,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DBAF42A918A9B4B800BB46CD /* Unused Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DBFC77CD188DE453000181C6 /* ProductsViewController.h */,
+				DBFC77CE188DE453000181C6 /* ProductsViewController.m */,
+				DBFC77D0188DE46B000181C6 /* MarketsViewController.h */,
+				DBFC77D1188DE46B000181C6 /* MarketsViewController.m */,
+			);
+			name = "Unused Controllers";
+			sourceTree = "<group>";
+		};
+		DBAF42AA18A9B4FE00BB46CD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DB56BCDB1893270100AF2289 /* ProductsParseViewController.h */,
+				DB56BCDC1893270100AF2289 /* ProductsParseViewController.m */,
+				DBFC77D6188DE4B6000181C6 /* ProductDetailViewController.h */,
+				DBFC77D7188DE4B6000181C6 /* ProductDetailViewController.m */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DBAF42AB18A9B50600BB46CD /* Markets */ = {
+			isa = PBXGroup;
+			children = (
+				DBAF42A618A9AF7800BB46CD /* MarketsParseViewController.h */,
+				DBAF42A718A9AF7800BB46CD /* MarketsParseViewController.m */,
+				DBFC77D9188DE4CE000181C6 /* MarketDetailViewController.h */,
+				DBFC77DA188DE4CE000181C6 /* MarketDetailViewController.m */,
+			);
+			name = Markets;
+			sourceTree = "<group>";
+		};
+		DBAF42AC18A9B50D00BB46CD /* Recipes */ = {
+			isa = PBXGroup;
+			children = (
+				DB4D4B0118A59CC1004F5787 /* RecipeDetailViewController.h */,
+				DB4D4B0218A59CC1004F5787 /* RecipeDetailViewController.m */,
+				DB4D4B0918A80EF3004F5787 /* FavoriteRecipesViewController.h */,
+				DB4D4B0A18A80EF3004F5787 /* FavoriteRecipesViewController.m */,
+			);
+			name = Recipes;
+			sourceTree = "<group>";
+		};
+		DBAF42AD18A9B7D800BB46CD /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DBAF42AE18A9B7FB00BB46CD /* GetLocation.h */,
+				DBAF42AF18A9B7FB00BB46CD /* GetLocation.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		DBFC7787188DE381000181C6 = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +226,7 @@
 		DBFC7792188DE381000181C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DB4D4B0418A5DFB3004F5787 /* FacebookSDK.framework */,
 				DBFC77F4188F7244000181C6 /* SystemConfiguration.framework */,
 				DBFC77F2188F723A000181C6 /* StoreKit.framework */,
 				DBFC77F0188F7234000181C6 /* Security.framework */,
@@ -180,6 +249,7 @@
 		DBFC7799188DE381000181C6 /* IPS */ = {
 			isa = PBXGroup;
 			children = (
+				DBAF42AD18A9B7D800BB46CD /* Helpers */,
 				DBFC77E1188DED3F000181C6 /* Delegates */,
 				DBFC77DC188DE4F2000181C6 /* Views */,
 				DBFC77C3188DE39F000181C6 /* Controllers */,
@@ -235,18 +305,12 @@
 		DBFC77C3188DE39F000181C6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				DBFC77CD188DE453000181C6 /* ProductsViewController.h */,
-				DBFC77CE188DE453000181C6 /* ProductsViewController.m */,
-				DBFC77D0188DE46B000181C6 /* MarketsViewController.h */,
-				DBFC77D1188DE46B000181C6 /* MarketsViewController.m */,
-				DBFC77D6188DE4B6000181C6 /* ProductDetailViewController.h */,
-				DBFC77D7188DE4B6000181C6 /* ProductDetailViewController.m */,
-				DBFC77D9188DE4CE000181C6 /* MarketDetailViewController.h */,
-				DBFC77DA188DE4CE000181C6 /* MarketDetailViewController.m */,
-				DB56BCDB1893270100AF2289 /* ProductsParseViewController.h */,
-				DB56BCDC1893270100AF2289 /* ProductsParseViewController.m */,
-				DB4D4B0118A59CC1004F5787 /* RecipeDetailViewController.h */,
-				DB4D4B0218A59CC1004F5787 /* RecipeDetailViewController.m */,
+				DBAF42AA18A9B4FE00BB46CD /* Products */,
+				DBAF42AB18A9B50600BB46CD /* Markets */,
+				DBAF42AC18A9B50D00BB46CD /* Recipes */,
+				DBAF42A918A9B4B800BB46CD /* Unused Controllers */,
+				DB4D4B0618A7FC78004F5787 /* SignInViewController.h */,
+				DB4D4B0718A7FC78004F5787 /* SignInViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -365,11 +429,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBFC77A4188DE381000181C6 /* AppDelegate.m in Sources */,
+				DB4D4B0B18A80EF3004F5787 /* FavoriteRecipesViewController.m in Sources */,
 				DBFC77CC188DE41B000181C6 /* Product.m in Sources */,
 				DB56BCDD1893270100AF2289 /* ProductsParseViewController.m in Sources */,
 				DBFC77DB188DE4CE000181C6 /* MarketDetailViewController.m in Sources */,
+				DB4D4B0818A7FC78004F5787 /* SignInViewController.m in Sources */,
 				DBFC77A0188DE381000181C6 /* main.m in Sources */,
 				DBFC77D8188DE4B6000181C6 /* ProductDetailViewController.m in Sources */,
+				DBAF42A818A9AF7800BB46CD /* MarketsParseViewController.m in Sources */,
+				DBAF42B018A9B7FB00BB46CD /* GetLocation.m in Sources */,
 				DBFC77C6188DE3F4000181C6 /* Market.m in Sources */,
 				DBFC77D2188DE46B000181C6 /* MarketsViewController.m in Sources */,
 				DB4D4B0318A59CC1004F5787 /* RecipeDetailViewController.m in Sources */,
