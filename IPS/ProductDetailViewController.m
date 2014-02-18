@@ -31,14 +31,24 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    
 
-    
-    
-    
     
     self.productNameLabel.text = [self.exam objectForKey:@"name"];
     self.navigationItem.title = [self.exam objectForKey:@"name"];
+    
+    
+
+    
+    PFFile *imageFile = [self.exam objectForKey:@"image"];
+    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error){
+        if (!error) {
+            UIImage *MyPicture = [UIImage imageWithData:data];
+            self.productImage.image = MyPicture;
+        }
+    }];
+    [self.productImage setClipsToBounds:YES];
+    
+    
     
     Recipe *recipes = [[Recipe alloc] init];
     

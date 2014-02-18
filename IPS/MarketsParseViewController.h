@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import <CoreLocation/CoreLocation.h>
+#import "MarketDetailViewController.h"
 
 
 @interface MarketsParseViewController : PFQueryTableViewController <CLLocationManagerDelegate>
+
+@property (strong, nonatomic) CLLocationManager* locationManager;
 
 @end

@@ -27,4 +27,7 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *mainScrollView;
 
 
+@property (weak, nonatomic) PFObject *exam;
+
+
 @end

@@ -73,7 +73,7 @@
                                       reuseIdentifier:CellIdentifier];
     }
     
-    // Configure the cell to show todo item with a priority at the bottom
+
     UILabel *productName;
     productName = (UILabel *)[cell viewWithTag:2];
 //    productName.numberOfLines = 0;
