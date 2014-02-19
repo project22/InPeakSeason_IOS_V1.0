@@ -105,7 +105,7 @@
     if ([segue.identifier isEqualToString:@"toMarketDetail"]) {
         NSIndexPath *indexPath = [self.marketsTable indexPathForSelectedRow];
         MarketDetailViewController *destViewController = segue.destinationViewController;
-        destViewController.marketID = [NSString stringWithFormat:@"%@", [[markets objectAtIndex:indexPath.row] valueForKey:@"id"]];
+//        destViewController.marketID = [NSString stringWithFormat:@"%@", [[markets objectAtIndex:indexPath.row] valueForKey:@"id"]];
         
         NSString * rawMarketName = [NSString stringWithFormat:@"%@", [[markets objectAtIndex:indexPath.row] valueForKey:@"marketname"]];
         NSString  *trimmedMarketName = [rawMarketName substringFromIndex:4];

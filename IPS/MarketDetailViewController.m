@@ -16,52 +16,80 @@
 @synthesize mapView;
 
 
-//- (void)setGeoPoint:(PFGeoPoint *)geoPoint {
-//    _coordinate = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
+
+
+
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+{
+    
+    PFGeoPoint *marketPoint = [self.exam objectForKey:@"GeoPoint"];
+    
+//    CLLocation *mapCenter = [[CLLocation alloc] initWithLatitude:(userLocation.coordinate.longitude - marketPoint.longitude) longitude:(userLocation.coordinate.latitude - marketPoint.latitude) ];
 //    
-//    static NSDateFormatter *dateFormatter = nil;
-//    if (dateFormatter == nil) {
-//        dateFormatter = [[NSDateFormatter alloc] init];
-//        [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
-//        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-//    }
+//    float mapWidth = fabsf(userLocation.coordinate.longitude - marketPoint.longitude) * 200000;
+//    float mapHeight = fabsf(userLocation.coordinate.latitude - marketPoint.latitude) * 200000;
+    
+    
 //    
-//    static NSNumberFormatter *numberFormatter = nil;
-//    if (numberFormatter == nil) {
-//        numberFormatter = [[NSNumberFormatter alloc] init];
-//        [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-//        [numberFormatter setMaximumFractionDigits:3];
-//    }
+//    NSLog(@"mapWidth = %f", mapWidth);
+//    NSLog(@"mapHeight = %f", mapHeight);
 //    
-//    _title = [dateFormatter stringFromDate:[self.object updatedAt]];
-//    _subtitle = [NSString stringWithFormat:@"%@, %@", [numberFormatter stringFromNumber:[NSNumber numberWithDouble:geoPoint.latitude]],
-//                 [numberFormatter stringFromNumber:[NSNumber numberWithDouble:geoPoint.longitude]]];
-//}
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 16093.4, 16093.4);
+    [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
+    
+    // Add an annotation
+    
+
+    
+    CLLocationCoordinate2D pinCoordinate;
+    pinCoordinate.latitude = marketPoint.latitude;
+    pinCoordinate.longitude = marketPoint.longitude;
+    
+    
+    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+    
+    
+    point.coordinate = pinCoordinate;
+//    point.title = @"Where am I?";
+//    point.subtitle = @"I'm here!!!";
+    
+    [self.mapView addAnnotation:point];
+}
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    NSLog(@"%@", self.exam);
-    
-    
 	// Do any additional setup after loading the view.
     self.mapView.delegate = self;
     
+
     [self.mainScrollView setContentSize:CGSizeMake(320, 1000)];
     [self.mainScrollView setScrollEnabled:YES];
     
     
     self.navigationItem.title = [self.exam objectForKey:@"MarketName"];
-
-    self.marketNameLabel.text = [self.exam objectForKey:@"MarketName"];
-    self.marketNameLabel.numberOfLines = 0;
-    [self.marketNameLabel sizeToFit];
     
-    self.outputAddressLabel.text = [self.exam objectForKey:@"street"];
-    self.outputAddressLabel.numberOfLines = 0;
-    [self.outputAddressLabel sizeToFit];
+    NSString *fullAddress = [[NSString alloc] initWithFormat:@"%@, %@", [self.exam objectForKey:@"street"], [self.exam objectForKey:@"city"]];
+    
+    [self.addressButton setTitle:fullAddress forState:UIControlStateNormal];
+    
+    
+    
+    NSString *season1Date = [self.exam objectForKey:@"Season1Date"];
+    if (season1Date) {
+        NSLog(@"Season 1:%@", season1Date);
+    }
+    NSString *season2Date = [self.exam objectForKey:@"Season2Date"];
+    if (!season2Date == NULL) {
+        NSLog(@"Season 2: %@", season2Date);
+    }
+    NSString *season3Date = [self.exam objectForKey:@"Season3Date"];
+    if (season3Date) {
+        NSLog(@"Season 3: %@", season2Date);
+    }
+
 
 //    self.outputScheduleLabel.text = [self.exam objectForKey:@"Season1Date"];
 //    self.outputScheduleLabel.numberOfLines = 0;
@@ -90,29 +118,31 @@
     
 }
 
-//- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
-//{
-////    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 800, 800);
-////    [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
-//    
-//    Market *market = [[Market alloc] init];
-//    NSDictionary *marketDetails = [market getMarketDetails:self.marketID];
-//    
-//    
-//    
-//}
 
-//- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
-//{
-//    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 800, 800);
-//    [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
-//    NSLog(@"I should show my location now");
-//}
+
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
+
+- (IBAction)addressButtonTouch:(id)sender {
+    
+    PFGeoPoint *marketPoint = [self.exam objectForKey:@"GeoPoint"];
+    CLLocationCoordinate2D rdOfficeLocation = CLLocationCoordinate2DMake(marketPoint.latitude, marketPoint.longitude);
+    
+    //Apple Maps, using the MKMapItem class
+    MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:rdOfficeLocation addressDictionary:nil];
+    MKMapItem *item = [[MKMapItem alloc] initWithPlacemark:placemark];
+    item.name = [self.exam objectForKey:@"MarketName"];
+    [item openInMapsWithLaunchOptions:nil];
+}
+
+
 
 @end

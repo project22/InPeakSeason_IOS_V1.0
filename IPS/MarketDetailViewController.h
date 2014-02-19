@@ -12,20 +12,18 @@
 #import "Market.h"
 
 
-@interface MarketDetailViewController : UIViewController <MKMapViewDelegate>
 
-@property (strong, nonatomic) IBOutlet UIImageView *marketStreetView;
-@property (strong, nonatomic) NSString *marketID;
+@interface MarketDetailViewController : UIViewController <MKMapViewDelegate, UIActionSheetDelegate>
+
+@property (strong, nonatomic) IBOutlet UIButton *addressButton;
+- (IBAction)addressButtonTouch:(id)sender;
+
+
 @property (strong, nonatomic) NSString *marketName;
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
-@property (weak, nonatomic) IBOutlet UILabel *marketNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *outputAddressLabel;
-@property (weak, nonatomic) IBOutlet UILabel *outputProductsLabel;
-@property (weak, nonatomic) IBOutlet UILabel *outputScheduleLabel;
 
 @property (strong, nonatomic) IBOutlet UIScrollView *mainScrollView;
-
 
 @property (weak, nonatomic) PFObject *exam;
 

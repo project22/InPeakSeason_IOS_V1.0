@@ -31,12 +31,14 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    // This cleans up the spacing under the navbar.  
 
+    
     
     self.productNameLabel.text = [self.exam objectForKey:@"name"];
     self.navigationItem.title = [self.exam objectForKey:@"name"];
     
-    
+//    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
 
     
     PFFile *imageFile = [self.exam objectForKey:@"image"];
@@ -44,6 +46,8 @@
         if (!error) {
             UIImage *MyPicture = [UIImage imageWithData:data];
             self.productImage.image = MyPicture;
+            
+//            [self.navigationController.navigationBar setBackgroundImage:MyPicture forBarMetrics:UIBarMetricsDefault];
         }
     }];
     [self.productImage setClipsToBounds:YES];
@@ -64,6 +68,8 @@
         CGRect frame;
         frame.origin.x = self.recipeScrollView.frame.size.width * i;
         frame.origin.y = 0;
+//        frame.size.width = 50;
+//        frame.size.height =
         frame.size = self.recipeScrollView.frame.size;
         
         UIView *subview = [[UIView alloc] initWithFrame:frame];

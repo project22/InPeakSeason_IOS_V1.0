@@ -12,8 +12,9 @@
 #import "MarketDetailViewController.h"
 
 
-@interface MarketsParseViewController : PFQueryTableViewController <CLLocationManagerDelegate>
-
-@property (strong, nonatomic) CLLocationManager* locationManager;
+@interface MarketsParseViewController : PFQueryTableViewController <CLLocationManagerDelegate> {
+    CLLocationManager *locationManager;
+    CLLocation *userLocation;
+}
 
 @end

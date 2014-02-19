@@ -17,30 +17,35 @@
 @implementation MarketsParseViewController
 
 
-- (CLLocationManager *)locationManager {
-    if (_locationManager != nil) {
-        return _locationManager;
-    }
-    
-    _locationManager = [[CLLocationManager alloc] init];
-    [_locationManager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
-    [_locationManager setDelegate:self];
 
-    
-    return _locationManager;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [[self locationManager] startUpdatingLocation];
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager startUpdatingLocation];
     
     //    UINavigationBar *navBar = self.navigationController.navigationBar;
     //    UIImage *image = [UIImage imageNamed:@"peak-thumbnail.png"];
     //    [navBar setBackgroundImage:image forBarMetrics:(UIBarMetricsDefault)];
     
     
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    
+    userLocation = newLocation;
+    [self queryForTable];
+    [self loadObjects];
+    
+    
+//    NSLog(@"OldLocation %f %f", oldLocation.coordinate.latitude, oldLocation.coordinate.longitude);
+//    NSLog(@"NewLocation %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
+    [locationManager stopUpdatingLocation];
 }
 
 
@@ -60,10 +65,10 @@
     
     // get actual user location!!
     
-    PFGeoPoint *userGeoPoint = [PFGeoPoint geoPointWithLatitude:37.856965
-                                                      longitude:-122.483826];
+    PFGeoPoint *userGeoPoint = [PFGeoPoint geoPointWithLatitude:userLocation.coordinate.latitude
+                                                      longitude:userLocation.coordinate.longitude];
     PFQuery *query = [PFQuery queryWithClassName:@"Market"];
-    [query whereKey:@"GeoPoint" nearGeoPoint:userGeoPoint withinMiles:10.0];
+    [query whereKey:@"GeoPoint" nearGeoPoint:userGeoPoint withinMiles:5.0];
 
 //    
 //    NSArray *placeObjects = [query findObjects];
