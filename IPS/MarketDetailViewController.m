@@ -16,6 +16,28 @@
 @synthesize mapView;
 
 
+//- (void)setGeoPoint:(PFGeoPoint *)geoPoint {
+//    _coordinate = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
+//    
+//    static NSDateFormatter *dateFormatter = nil;
+//    if (dateFormatter == nil) {
+//        dateFormatter = [[NSDateFormatter alloc] init];
+//        [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
+//        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+//    }
+//    
+//    static NSNumberFormatter *numberFormatter = nil;
+//    if (numberFormatter == nil) {
+//        numberFormatter = [[NSNumberFormatter alloc] init];
+//        [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+//        [numberFormatter setMaximumFractionDigits:3];
+//    }
+//    
+//    _title = [dateFormatter stringFromDate:[self.object updatedAt]];
+//    _subtitle = [NSString stringWithFormat:@"%@, %@", [numberFormatter stringFromNumber:[NSNumber numberWithDouble:geoPoint.latitude]],
+//                 [numberFormatter stringFromNumber:[NSNumber numberWithDouble:geoPoint.longitude]]];
+//}
+
 
 - (void)viewDidLoad
 {
@@ -30,44 +52,6 @@
     [self.mainScrollView setContentSize:CGSizeMake(320, 1000)];
     [self.mainScrollView setScrollEnabled:YES];
     
-
-    
-//    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-//    [geocoder geocodeAddressString:[marketDetails  valueForKeyPath:@"marketdetails.Address"] completionHandler:^(NSArray* placemarks, NSError* error){
-//        for (CLPlacemark* aPlacemark in placemarks)
-//        {
-//            // Process the placemark.
-//            MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-//            point.coordinate = aPlacemark.location.coordinate;
-//            point.title = self.marketName;
-////            point.subtitle = @"Cool";
-//            
-//            [self.mapView addAnnotation:point];
-//            
-//            MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(aPlacemark.location.coordinate, 1000, 1000);
-//            [self.mapView setRegion:[self.mapView regionThatFits:region] animated:NO];
-//            
-//            //Set a few MKMapView Properties to allow pitch, building view, points of interest, and zooming.
-//            self.mapView.pitchEnabled = YES;
-////            self.mapView.showsBuildings = YES;
-//            [self.mapView setShowsBuildings:YES];
-//            self.mapView.showsPointsOfInterest = YES;
-//            self.mapView.zoomEnabled = YES;
-//            self.mapView.scrollEnabled = YES;
-//           
-//            
-//            
-//            //set up initial location
-//            CLLocationCoordinate2D ground = CLLocationCoordinate2DMake(point.coordinate.latitude, point.coordinate.longitude);
-//            CLLocationCoordinate2D eye = CLLocationCoordinate2DMake(point.coordinate.latitude - .01000, point.coordinate.longitude);
-//            MKMapCamera *mapCamera = [MKMapCamera cameraLookingAtCenterCoordinate:ground
-//                                                                fromEyeCoordinate:eye
-//                                                                      eyeAltitude:50];
-//            
-//            self.mapView.camera = mapCamera;
-//            
-//        }
-//    }];
     
     self.navigationItem.title = [self.exam objectForKey:@"MarketName"];
 
@@ -79,9 +63,9 @@
     self.outputAddressLabel.numberOfLines = 0;
     [self.outputAddressLabel sizeToFit];
 
-    self.outputScheduleLabel.text = [self.exam objectForKey:@"Season1Date"];
-    self.outputScheduleLabel.numberOfLines = 0;
-    [self.outputScheduleLabel sizeToFit];
+//    self.outputScheduleLabel.text = [self.exam objectForKey:@"Season1Date"];
+//    self.outputScheduleLabel.numberOfLines = 0;
+//    [self.outputScheduleLabel sizeToFit];
     
 //    self.outputProductsLabel.text = [marketDetails  valueForKeyPath:@"marketdetails.Products"];
 //    self.outputProductsLabel.numberOfLines = 0;
