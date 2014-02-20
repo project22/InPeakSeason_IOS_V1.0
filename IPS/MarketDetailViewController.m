@@ -75,19 +75,104 @@
     
     [self.addressButton setTitle:fullAddress forState:UIControlStateNormal];
     
+    int rowStart = 185;
+    int rowSpacing = 25;
+    int fontSize = 12;
     
     
     NSString *season1Date = [self.exam objectForKey:@"Season1Date"];
-    if (season1Date) {
+    if (season1Date != (NSString *)[NSNull null]) {
         NSLog(@"Season 1:%@", season1Date);
+        
+        UILabel *seasonLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, rowStart + 25, 132, 21)];
+        seasonLabel.text = season1Date;
+        seasonLabel.textColor = [UIColor grayColor];
+        [seasonLabel setFont:[UIFont systemFontOfSize:fontSize]];
+        [self.mainScrollView addSubview:seasonLabel];
+        
+        NSString *season1Time = [self.exam objectForKey:@"Season1Time"];
+        if (season1Time != (NSString *)[NSNull null]) {
+            
+            NSArray *timesArray = [season1Time componentsSeparatedByString:@";"];
+            for (int x = 0; x < timesArray.count -1; x++) {
+                UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, rowStart + 25, 161, 21)];
+                timeLabel.text = timesArray[x];
+                timeLabel.textColor = [UIColor grayColor];
+                [timeLabel setFont:[UIFont systemFontOfSize:fontSize]];
+                [self.mainScrollView addSubview:timeLabel];
+                
+                rowStart += rowSpacing;
+                
+            }
+     
+        }
+        
+
+    } else {
+        UILabel *seasonLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, rowStart + 25, 220, 21)];
+        seasonLabel.text = @"No time data available for this market.";
+        seasonLabel.textColor = [UIColor grayColor];
+        [seasonLabel setFont:[UIFont systemFontOfSize:fontSize]];
+        [self.mainScrollView addSubview:seasonLabel];
     }
+    
     NSString *season2Date = [self.exam objectForKey:@"Season2Date"];
-    if (!season2Date == NULL) {
+    if (season2Date != (NSString *)[NSNull null]) {
         NSLog(@"Season 2: %@", season2Date);
+        
+        UILabel *seasonLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, rowStart + 25, 132, 21)];
+        seasonLabel.text = season2Date;
+        seasonLabel.textColor = [UIColor grayColor];
+        [seasonLabel setFont:[UIFont systemFontOfSize:fontSize]];
+        [self.mainScrollView addSubview:seasonLabel];
+        
+        NSString *season2Time = [self.exam objectForKey:@"Season2Time"];
+        if (season2Time != (NSString *)[NSNull null]) {
+            
+            NSArray *timesArray = [season2Time componentsSeparatedByString:@";"];
+            for (int x = 0; x < timesArray.count-1; x++) {
+                UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, rowStart + 25, 161, 21)];
+                timeLabel.text = timesArray[x];
+                timeLabel.textColor = [UIColor grayColor];
+                [timeLabel setFont:[UIFont systemFontOfSize:fontSize]];
+                [self.mainScrollView addSubview:timeLabel];
+                
+                rowStart += rowSpacing;
+                
+            }
+           
+        }
+        
+        
     }
     NSString *season3Date = [self.exam objectForKey:@"Season3Date"];
-    if (season3Date) {
-        NSLog(@"Season 3: %@", season2Date);
+    if (season3Date != (NSString *)[NSNull null]){
+        NSLog(@"Season 3: %@", season3Date);
+        
+        UILabel *seasonLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, rowStart + 25, 132, 21)];
+        seasonLabel.text = season3Date;
+        seasonLabel.textColor = [UIColor grayColor];
+        [seasonLabel setFont:[UIFont systemFontOfSize:fontSize]];
+        [self.mainScrollView addSubview:seasonLabel];
+        
+        NSString *season3Time = [self.exam objectForKey:@"Season1Time"];
+        if (season3Time != (NSString *)[NSNull null]) {
+            
+            NSArray *timesArray = [season3Time componentsSeparatedByString:@";"];
+            for (int x = 0; x < timesArray.count-1; x++) {
+                UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, rowStart + 25, 161, 21)];
+                timeLabel.text = timesArray[x];
+                timeLabel.textColor = [UIColor grayColor];
+                [timeLabel setFont:[UIFont systemFontOfSize:fontSize]];
+                [self.mainScrollView addSubview:timeLabel];
+                
+                rowStart += rowSpacing;
+                
+            }
+            
+        }
+        
+        
     }
 
 

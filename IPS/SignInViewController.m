@@ -19,6 +19,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+
+    NSLog(@"login Controller");
     
     // Create request for user's Facebook data
     FBRequest *request = [FBRequest requestForMe];
@@ -67,7 +69,13 @@
             NSLog(@"User with facebook logged in!");
             //            [self.navigationController pushViewController:[[UserDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped] animated:YES];
         }
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
     }];
+}
+
+- (IBAction)cancelLogin:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning

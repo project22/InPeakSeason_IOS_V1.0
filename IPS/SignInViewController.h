@@ -13,4 +13,6 @@
 
 - (IBAction)facebookLogin:(id)sender;
 
+- (IBAction)cancelLogin:(id)sender;
+
 @end

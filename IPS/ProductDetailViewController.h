@@ -9,14 +9,18 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import "Recipe.h"
+#import "SignInViewController.h"
 
 
-@interface ProductDetailViewController : UIViewController
+@interface ProductDetailViewController : UIViewController <UIAlertViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *productNameLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *productImage;
 
 @property (weak, nonatomic) PFObject *exam;
 
+@property (strong, nonatomic) IBOutlet UIButton *addToShoppingList;
+
+- (IBAction)addToShoppingList:(id)sender;
 
 @end

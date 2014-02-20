@@ -281,6 +281,9 @@
                                     <color key="titleColor" red="0.086274512110000007" green="0.73333334920000004" blue="0.1176470667" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="addToShoppingList:" destination="eYf-p9-omQ" eventType="touchUpInside" id="hbV-mC-5h5"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" id="APq-9J-Hy8">
                                 <rect key="frame" x="164" y="290" width="136" height="72"/>
@@ -295,6 +298,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="4Ym-LX-5dx"/>
                     <connections>
+                        <outlet property="addToShoppingList" destination="LXg-jt-b8h" id="WFg-S8-PRZ"/>
                         <outlet property="productImage" destination="q3f-Ci-kK9" id="IpM-Y9-KvI"/>
                         <outlet property="productNameLabel" destination="awu-C7-NQ7" id="mPI-Zb-7dh"/>
                         <outlet property="recipeScrollView" destination="3ws-tM-iHg" id="tk8-vu-GbK"/>
@@ -368,14 +372,14 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Season" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iun-CI-wyd">
-                                                <rect key="frame" x="10" y="245" width="151" height="21"/>
+                                                <rect key="frame" x="10" y="248" width="132" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ra7-CG-og0">
-                                                <rect key="frame" x="169" y="245" width="142" height="21"/>
+                                                <rect key="frame" x="150" y="248" width="161" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="highlightedColor"/>
@@ -469,21 +473,40 @@
         <!--Sign In View Controller-->
         <scene sceneID="z7A-j9-nVs">
             <objects>
-                <viewController id="5oH-cf-EXi" customClass="SignInViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="VST-Ip-KsB" customClass="sign">
+                <viewController storyboardIdentifier="loginScreen" id="5oH-cf-EXi" customClass="SignInViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VST-Ip-KsB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="p4Y-DD-4j2">
-                                <rect key="frame" x="-263" y="159" width="847" height="146"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wUg-EN-5jw">
+                                <rect key="frame" x="20" y="261" width="280" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Login With Facebook" backgroundImage="green_button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="facebookLogin:" destination="5oH-cf-EXi" eventType="touchUpInside" id="QOo-5B-3s4"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In order to create a shopping list or save recipes, you must have an account at InPeakSeason." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cfw-lu-1YD">
+                                <rect key="frame" x="40" y="154" width="240" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="O1T-5i-xr6">
+                                <rect key="frame" x="136" y="322" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelLogin:" destination="5oH-cf-EXi" eventType="touchUpInside" id="60a-u1-8Md"/>
+                                </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.76432214860000003" blue="0.34857400259999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lEs-to-MzQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

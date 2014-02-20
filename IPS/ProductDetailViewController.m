@@ -33,7 +33,7 @@
     
     // This cleans up the spacing under the navbar.  
 
-    
+    NSLog(@"Object ID %@", [_exam objectId] );
     
     self.productNameLabel.text = [self.exam objectForKey:@"name"];
     self.navigationItem.title = [self.exam objectForKey:@"name"];
@@ -59,7 +59,7 @@
     NSDictionary *recipeDictionary = [recipes getRecipes: [self.exam objectForKey:@"name"]];
     
     recipeArray = [recipeDictionary objectForKey:@"recipes"];
-    NSLog(@"from controller, the recipes are: %@", recipeArray);
+//    NSLog(@"from controller, the recipes are: %@", recipeArray);
 
     //output recipes into scroll view
     self.recipeScrollView.contentSize = CGSizeMake(self.recipeScrollView.frame.size.width * recipeArray.count, self.recipeScrollView.frame.size.height);
@@ -120,6 +120,11 @@
         
         [URLbutton addTarget:self action:@selector(openRecipeURL:) forControlEvents:UIControlEventTouchUpInside];
         [subview addSubview:URLbutton];
+        
+        //tab on view
+//        UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+//        [tap setNumberOfTapsRequired:1];
+//        [subview addGestureRecognizer:tap];
 
         [self.recipeScrollView addSubview:subview];
         
@@ -135,6 +140,21 @@
     
     [self performSegueWithIdentifier:@"openRecipe" sender:self];
 }
+
+//- (void)handleTap:(UITapGestureRecognizer *)sender {
+//    
+//    if (sender.state == UIGestureRecognizerStateEnded)
+//    {
+//        UITapGestureRecognizer *button = (UITapGestureRecognizer*) sender;
+//        NSLog(@"the tag of button is %ld", (long)button.tag);
+//        selectedRecipeIndex = button.tag;
+//        
+//        
+//        [self performSegueWithIdentifier:@"openRecipe" sender:self];
+//    }
+//    
+//    
+//}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -155,6 +175,87 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
+- (IBAction)addToShoppingList:(id)sender {
+    
+    if ([PFUser currentUser] != nil) {
+        
+        NSLog(@"logged in");
+        PFUser *user = [PFUser currentUser];
+        
+        // Make a new post
+        PFObject *shoppingItem = [PFObject objectWithClassName:@"ShoppingItem"];
+        
+        shoppingItem[@"itemID"] = [self.exam objectId];
+        shoppingItem[@"user"] = user;
+        [shoppingItem save];
+        
+        [self.addToShoppingList setTitle:@"Added!" forState:UIControlStateNormal];
+        self.addToShoppingList.enabled = NO;
+        
+    } else {
+        NSLog(@"Not logged in");
+        
+//        SignInViewController *signInVC = [[SignInViewController alloc] init];
+//        
+//       [self presentViewController:signInVC animated:YES completion:nil];
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+        UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"loginScreen"];
+        
+        
+        [vc setModalPresentationStyle:UIModalPresentationFullScreen];
+       
+        
+        [self presentViewController:vc animated:YES completion:nil];
+        
+//        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Please Log in"
+//                                                          message:@"To save a recipe, you must have an account with IPS and be logged in."
+//                                                         delegate:nil
+//                                                cancelButtonTitle:@"Cancel"
+//                                                otherButtonTitles:@"Login with Facebook", nil];
+//        [message show];
+    }
+
+}
+
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    
+    NSLog(@"index: %@", title);
+    
+    if(buttonIndex == 0)
+    {
+        NSLog(@"Loggin into FB");
+        
+        // The permissions requested from the user
+        NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location"];
+        
+        // Login PFUser using Facebook
+        [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
+            //        [_activityIndicator stopAnimating]; // Hide loading indicator
+            
+            if (!user) {
+                if (!error) {
+                    NSLog(@"Uh oh. The user cancelled the Facebook login.");
+                } else {
+                    NSLog(@"Uh oh. An error occurred: %@", error);
+                }
+            } else if (user.isNew) {
+                NSLog(@"User with facebook signed up and logged in!");
+                //            [self.navigationController pushViewController:[[UserDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped] animated:YES];
+            } else {
+                NSLog(@"User with facebook logged in!");
+                //            [self.navigationController pushViewController:[[UserDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped] animated:YES];
+            }
+        }];
+    }
+}
+
 
 
 
