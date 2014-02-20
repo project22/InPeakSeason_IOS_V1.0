@@ -59,7 +59,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1P1-X7-rKh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1835" y="1030"/>
+            <point key="canvasLocation" x="-685" y="2606"/>
         </scene>
         <!--View Controller - Local Buzz-->
         <scene sceneID="EF7-6I-aOg">
@@ -112,21 +112,33 @@
             </objects>
             <point key="canvasLocation" x="952" y="1996"/>
         </scene>
-        <!--Table View Controller - Shopping List-->
+        <!--Shopping List View Controller - Shopping List-->
         <scene sceneID="mro-SQ-oeA">
             <objects>
-                <tableViewController id="e7O-mU-vos" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="GIJ-SQ-XMt">
+                <tableViewController id="e7O-mU-vos" customClass="ShoppingListViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="59" sectionHeaderHeight="22" sectionFooterHeight="22" id="GIJ-SQ-XMt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="HU6-QF-dhV">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="59" id="HU6-QF-dhV">
+                                <rect key="frame" x="0.0" y="86" width="320" height="59"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HU6-QF-dhV" id="vai-oj-v15">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2gX-DE-aEe">
+                                            <rect key="frame" x="0.0" y="0.0" width="58" height="58"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="a0q-iw-Ro9">
+                                            <rect key="frame" x="66" y="18" width="234" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -135,11 +147,11 @@
                             <outlet property="delegate" destination="e7O-mU-vos" id="9Df-GM-aGj"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Shopping List" image="align_justify-32" id="Oje-sa-WeN"/>
+                    <navigationItem key="navigationItem" title="Shopping List" id="jrt-3n-vPl"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7xh-xy-TYo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="946" y="1156"/>
+            <point key="canvasLocation" x="1472" y="1156"/>
         </scene>
         <!--Favorite Recipes View Controller - Fav Recipes-->
         <scene sceneID="3Nl-hB-c3o">
@@ -401,7 +413,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ryg-OU-O9D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2117" y="174"/>
+            <point key="canvasLocation" x="2514" y="465"/>
         </scene>
         <!--Markets Parse View Controller-->
         <scene sceneID="9PZ-G9-SYc">
@@ -468,7 +480,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4yY-qt-gZY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2584" y="-212"/>
+            <point key="canvasLocation" x="2194" y="-221"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="z7A-j9-nVs">
@@ -529,7 +541,7 @@
                         <segue destination="rUS-YB-NnC" kind="relationship" relationship="viewControllers" id="Gvi-c6-DES"/>
                         <segue destination="9JV-3C-C1I" kind="relationship" relationship="viewControllers" id="HMG-0m-9cv"/>
                         <segue destination="g84-0Q-Fhu" kind="relationship" relationship="viewControllers" id="jco-iW-HvA"/>
-                        <segue destination="e7O-mU-vos" kind="relationship" relationship="viewControllers" id="o6z-bS-5gR"/>
+                        <segue destination="egU-37-IRs" kind="relationship" relationship="viewControllers" id="o6z-bS-5gR"/>
                         <segue destination="0Lh-xm-U8s" kind="relationship" relationship="viewControllers" id="g91-nx-eRJ"/>
                     </connections>
                 </tabBarController>
@@ -582,6 +594,28 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bQ3-VE-hYg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="965" y="-1009"/>
+        </scene>
+        <!--Navigation Controller - Shopping List-->
+        <scene sceneID="yO0-T6-1g3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="egU-37-IRs" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Shopping List" image="align_justify-32" id="Oje-sa-WeN"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="e1a-zX-Z1m">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="SnellRoundhand" family="Snell Roundhand" pointSize="28"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="e7O-mU-vos" kind="relationship" relationship="rootViewController" id="qq3-jv-WSq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6pE-Xt-G6h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="946" y="1156"/>
         </scene>
     </scenes>
     <resources>

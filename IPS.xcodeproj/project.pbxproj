@@ -14,6 +14,7 @@
 		DB56BCDD1893270100AF2289 /* ProductsParseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB56BCDC1893270100AF2289 /* ProductsParseViewController.m */; };
 		DBAF42A818A9AF7800BB46CD /* MarketsParseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBAF42A718A9AF7800BB46CD /* MarketsParseViewController.m */; };
 		DBAF42B018A9B7FB00BB46CD /* GetLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = DBAF42AF18A9B7FB00BB46CD /* GetLocation.m */; };
+		DBBEE7D518B6B838002710FA /* ShoppingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBBEE7D418B6B838002710FA /* ShoppingListViewController.m */; };
 		DBFC7794188DE381000181C6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFC7793188DE381000181C6 /* Foundation.framework */; };
 		DBFC7796188DE381000181C6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFC7795188DE381000181C6 /* CoreGraphics.framework */; };
 		DBFC7798188DE381000181C6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFC7797188DE381000181C6 /* UIKit.framework */; };
@@ -71,6 +72,8 @@
 		DBAF42A718A9AF7800BB46CD /* MarketsParseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketsParseViewController.m; sourceTree = "<group>"; };
 		DBAF42AE18A9B7FB00BB46CD /* GetLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetLocation.h; sourceTree = "<group>"; };
 		DBAF42AF18A9B7FB00BB46CD /* GetLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetLocation.m; sourceTree = "<group>"; };
+		DBBEE7D318B6B838002710FA /* ShoppingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListViewController.h; sourceTree = "<group>"; };
+		DBBEE7D418B6B838002710FA /* ShoppingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListViewController.m; sourceTree = "<group>"; };
 		DBFC7790188DE381000181C6 /* IPS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IPS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBFC7793188DE381000181C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DBFC7795188DE381000181C6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -204,6 +207,15 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		DBBEE7D218B6B7BA002710FA /* ShoppingList */ = {
+			isa = PBXGroup;
+			children = (
+				DBBEE7D318B6B838002710FA /* ShoppingListViewController.h */,
+				DBBEE7D418B6B838002710FA /* ShoppingListViewController.m */,
+			);
+			name = ShoppingList;
+			sourceTree = "<group>";
+		};
 		DBFC7787188DE381000181C6 = {
 			isa = PBXGroup;
 			children = (
@@ -305,6 +317,7 @@
 		DBFC77C3188DE39F000181C6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DBBEE7D218B6B7BA002710FA /* ShoppingList */,
 				DBAF42AA18A9B4FE00BB46CD /* Products */,
 				DBAF42AB18A9B50600BB46CD /* Markets */,
 				DBAF42AC18A9B50D00BB46CD /* Recipes */,
@@ -438,6 +451,7 @@
 				DBFC77D8188DE4B6000181C6 /* ProductDetailViewController.m in Sources */,
 				DBAF42A818A9AF7800BB46CD /* MarketsParseViewController.m in Sources */,
 				DBAF42B018A9B7FB00BB46CD /* GetLocation.m in Sources */,
+				DBBEE7D518B6B838002710FA /* ShoppingListViewController.m in Sources */,
 				DBFC77C6188DE3F4000181C6 /* Market.m in Sources */,
 				DBFC77D2188DE46B000181C6 /* MarketsViewController.m in Sources */,
 				DB4D4B0318A59CC1004F5787 /* RecipeDetailViewController.m in Sources */,
