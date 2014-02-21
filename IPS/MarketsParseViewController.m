@@ -55,7 +55,7 @@
         
 //        self.className = @"Product";
         self.pullToRefreshEnabled = YES;
-        self.paginationEnabled = NO;
+        self.paginationEnabled = YES;
         self.objectsPerPage = 25;
     }
     return self;

@@ -28,6 +28,12 @@
     
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+
 -(void)viewWillAppear:(BOOL)animated {
     [self loadObjects];
 }
@@ -39,7 +45,7 @@
         
         self.className = @"Product";
         self.pullToRefreshEnabled = YES;
-        self.paginationEnabled = NO;
+        self.paginationEnabled = YES;
         self.objectsPerPage = 25;
     }
     return self;
@@ -47,25 +53,49 @@
 
 - (PFQuery *)queryForTable {
     
-    PFQuery *listQuery = [PFQuery queryWithClassName:@"ShoppingItem"];
-    [listQuery whereKey:@"user" equalTo: [PFUser currentUser]];
-//    [seasonQuery whereKey:@"quality" greaterThan:[NSNumber numberWithInt:3]];
-    
-    
-    PFQuery *query = [PFQuery queryWithClassName:@"Product"];
+    if ([PFUser currentUser] != nil) {
+        
+        
+        PFQuery *listQuery = [PFQuery queryWithClassName:@"ShoppingItem"];
+        [listQuery whereKey:@"user" equalTo: [PFUser currentUser]];
+        //    [seasonQuery whereKey:@"quality" greaterThan:[NSNumber numberWithInt:3]];
+        
+        
+        PFQuery *query = [PFQuery queryWithClassName:@"Product"];
+        
+        [query whereKey:@"objectId" matchesKey:@"itemID" inQuery:listQuery];
+        
+        // If no objects are loaded in memory, we look to the cache
+        // first to fill the table and then subsequently do a query
+        // against the network.
+        if ([self.objects count] == 0) {
+            query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+        }
+        
+        [query orderByDescending:@"createdAt"];
+        [query whereKey:@"objectId" matchesKey:@"itemID" inQuery:listQuery];
+        return query;
+        
 
-    [query whereKey:@"objectId" matchesKey:@"itemID" inQuery:listQuery];
-    
-    // If no objects are loaded in memory, we look to the cache
-    // first to fill the table and then subsequently do a query
-    // against the network.
-    if ([self.objects count] == 0) {
-        query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+        
+    } else {
+        NSLog(@"Not logged in");
+        
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+        UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"loginScreen"];
+        
+        [vc setModalPresentationStyle:UIModalPresentationFullScreen];
+        
+        [self presentViewController:vc animated:YES completion:nil];
+        
+        
+        PFQuery *query = [PFQuery queryWithClassName:@"Product"];
+        [query whereKey:@"objectId" equalTo:@""];
+        return query;
+        
     }
     
-    [query orderByDescending:@"createdAt"];
-    
-    return query;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -104,4 +134,13 @@
 
 
 
+- (IBAction)deleteList:(id)sender {
+    
+    PFQuery *listQuery = [PFQuery queryWithClassName:@"ShoppingItem"];
+    [listQuery whereKey:@"user" equalTo: [PFUser currentUser]];
+    
+    NSLog(@"%ld", (long)listQuery.countObjects);
+    
+
+}
 @end

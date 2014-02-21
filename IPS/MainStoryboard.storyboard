@@ -61,57 +61,6 @@
             </objects>
             <point key="canvasLocation" x="-685" y="2606"/>
         </scene>
-        <!--View Controller - Local Buzz-->
-        <scene sceneID="EF7-6I-aOg">
-            <objects>
-                <viewController id="g84-0Q-Fhu" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fL9-RR-MWg">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="68" sectionHeaderHeight="22" sectionFooterHeight="22" id="YFm-rx-j4f">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="511"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="68" id="o2F-Fg-wEg">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="68"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o2F-Fg-wEg" id="lui-oy-exe">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="67"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <navigationBar contentMode="scaleToFill" id="RB4-Fl-hhH">
-                                <rect key="frame" x="0.0" y="21" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem id="AQp-SA-uxD">
-                                        <nil key="title"/>
-                                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="wlo-Em-Ddh">
-                                            <rect key="frame" x="8" y="8" width="304" height="29"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <segments>
-                                                <segment title="Products"/>
-                                                <segment title="Markets"/>
-                                                <segment title="Recipes"/>
-                                            </segments>
-                                            <color key="tintColor" red="0.086274512110000007" green="0.73333334920000004" blue="0.1176470667" alpha="1" colorSpace="deviceRGB"/>
-                                        </segmentedControl>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Local Buzz" image="topic-32" id="l8z-v9-llX"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Lfn-k7-LLD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="952" y="1996"/>
-        </scene>
         <!--Shopping List View Controller - Shopping List-->
         <scene sceneID="mro-SQ-oeA">
             <objects>
@@ -147,7 +96,13 @@
                             <outlet property="delegate" destination="e7O-mU-vos" id="9Df-GM-aGj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Shopping List" id="jrt-3n-vPl"/>
+                    <navigationItem key="navigationItem" title="Shopping List" id="jrt-3n-vPl">
+                        <barButtonItem key="leftBarButtonItem" title="Delete List" id="4ey-9R-7jX">
+                            <connections>
+                                <action selector="deleteList:" destination="e7O-mU-vos" id="FX8-UO-g0E"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7xh-xy-TYo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -195,7 +150,7 @@
             </objects>
             <point key="canvasLocation" x="957" y="453"/>
         </scene>
-        <!--Products Parse View Controller - San Francisco-->
+        <!--Products Parse View Controller - In Peak Season-->
         <scene sceneID="hbh-5d-lau">
             <objects>
                 <tableViewController id="6Lf-Pl-Tzz" customClass="ProductsParseViewController" sceneMemberID="viewController">
@@ -248,7 +203,7 @@
                             <outlet property="delegate" destination="6Lf-Pl-Tzz" id="XjC-xn-tBE"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="San Francisco" id="vKN-5Y-RKe">
+                    <navigationItem key="navigationItem" title="In Peak Season" id="vKN-5Y-RKe">
                         <barButtonItem key="leftBarButtonItem" image="peak_logo" id="85x-wg-aDN"/>
                     </navigationItem>
                 </tableViewController>
@@ -306,7 +261,6 @@
                                 </state>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.086274512110000007" green="0.73333334920000004" blue="0.1176470667" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="4Ym-LX-5dx"/>
                     <connections>
@@ -415,7 +369,7 @@
             </objects>
             <point key="canvasLocation" x="2514" y="465"/>
         </scene>
-        <!--Markets Parse View Controller-->
+        <!--Markets Parse View Controller - Local Markets-->
         <scene sceneID="9PZ-G9-SYc">
             <objects>
                 <tableViewController id="gYj-F7-poR" customClass="MarketsParseViewController" sceneMemberID="viewController">
@@ -450,7 +404,7 @@
                             <outlet property="delegate" destination="gYj-F7-poR" id="I3S-Sg-D0R"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ndF-gF-mji">
+                    <navigationItem key="navigationItem" title="Local Markets" id="ndF-gF-mji">
                         <barButtonItem key="rightBarButtonItem" title="Map View" id="rSZ-CU-H0G">
                             <connections>
                                 <segue destination="Z26-cv-oW1" kind="modal" modalTransitionStyle="flipHorizontal" id="RpX-Je-d96"/>
@@ -500,7 +454,7 @@
                                     <action selector="facebookLogin:" destination="5oH-cf-EXi" eventType="touchUpInside" id="QOo-5B-3s4"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In order to create a shopping list or save recipes, you must have an account at InPeakSeason." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cfw-lu-1YD">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In order to use a shopping list or save recipes, you must have an account at InPeakSeason." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cfw-lu-1YD">
                                 <rect key="frame" x="40" y="154" width="240" height="86"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -540,14 +494,14 @@
                     <connections>
                         <segue destination="rUS-YB-NnC" kind="relationship" relationship="viewControllers" id="Gvi-c6-DES"/>
                         <segue destination="9JV-3C-C1I" kind="relationship" relationship="viewControllers" id="HMG-0m-9cv"/>
-                        <segue destination="g84-0Q-Fhu" kind="relationship" relationship="viewControllers" id="jco-iW-HvA"/>
+                        <segue destination="iha-2C-2YZ" kind="relationship" relationship="viewControllers" id="1q9-bV-3wD"/>
                         <segue destination="egU-37-IRs" kind="relationship" relationship="viewControllers" id="o6z-bS-5gR"/>
                         <segue destination="0Lh-xm-U8s" kind="relationship" relationship="viewControllers" id="g91-nx-eRJ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="laU-PY-ZbE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="141" y="459"/>
+            <point key="canvasLocation" x="107" y="453"/>
         </scene>
         <!--Navigation Controller - Local Markets-->
         <scene sceneID="jPD-0B-PN6">
@@ -560,7 +514,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.086274512110000007" green="0.73333334920000004" blue="0.1176470667" alpha="1" colorSpace="deviceRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="0.0"/>
+                            <fontDescription key="fontDescription" name="SnellRoundhand" family="Snell Roundhand" pointSize="28"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -616,6 +570,139 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6pE-Xt-G6h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="946" y="1156"/>
+        </scene>
+        <!--Buzz View Controller - Local Buzz-->
+        <scene sceneID="qUi-a3-MUL">
+            <objects>
+                <tableViewController id="4Nm-cN-AV8" customClass="BuzzViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="94" sectionHeaderHeight="22" sectionFooterHeight="22" id="eSd-pj-dY4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="94" id="uE0-wD-tY2">
+                                <rect key="frame" x="0.0" y="86" width="320" height="94"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uE0-wD-tY2" id="pXj-6T-kQn">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="93"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="aB6-aR-38z">
+                                            <rect key="frame" x="11" y="11" width="40" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kdN-HW-CD0">
+                                            <rect key="frame" x="59" y="11" width="137" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="review" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Uf0-4Q-Ppg">
+                                            <rect key="frame" x="59" y="35" width="235" height="49"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LeH-xt-5Dq">
+                                            <rect key="frame" x="237" y="11" width="68" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="4Nm-cN-AV8" id="PgM-va-E9h"/>
+                            <outlet property="delegate" destination="4Nm-cN-AV8" id="ZR4-Cm-h8L"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Local Buzz" id="31v-c5-TWt">
+                        <barButtonItem key="leftBarButtonItem" title="Comment" id="Vy4-LZ-UVv">
+                            <connections>
+                                <action selector="addComment:" destination="4Nm-cN-AV8" id="HBZ-gl-sle"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QVT-tE-Dqk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1458" y="1958"/>
+        </scene>
+        <!--Add Comment View Controller-->
+        <scene sceneID="2na-Fs-wlo">
+            <objects>
+                <viewController storyboardIdentifier="addComment" id="GKd-IY-oYz" customClass="AddCommentViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9Og-xo-Rvt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Local Comment" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tt9-eu-Pbp">
+                                <rect key="frame" x="20" y="32" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="R67-aY-Dji">
+                                <rect key="frame" x="220" y="335" width="80" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancel" backgroundImage="green_button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ly7-oW-sze">
+                                <rect key="frame" x="20" y="335" width="192" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Post" backgroundImage="green_button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" text="Example: You've got to try the strawberries from Sunshine Farms at Westside Farmers Market." id="AXF-Oo-bGo">
+                                <rect key="frame" x="20" y="99" width="280" height="228"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Headline" minimumFontSize="17" id="sq7-v2-ZKg">
+                                <rect key="frame" x="20" y="61" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.86256377549999996" green="0.86256377549999996" blue="0.86256377549999996" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Il4-N9-34Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1427" y="2828"/>
+        </scene>
+        <!--Navigation Controller - Local Buzz-->
+        <scene sceneID="7Ol-GN-8it">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iha-2C-2YZ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Local Buzz" image="topic-32" id="pUe-Lo-MRk"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TyJ-fC-w2T">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="SnellRoundhand" family="Snell Roundhand" pointSize="28"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="4Nm-cN-AV8" kind="relationship" relationship="rootViewController" id="kck-Dd-iMO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CXY-Fl-5yU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="932" y="1958"/>
         </scene>
     </scenes>
     <resources>

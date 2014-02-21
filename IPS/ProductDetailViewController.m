@@ -198,9 +198,6 @@
     } else {
         NSLog(@"Not logged in");
         
-//        SignInViewController *signInVC = [[SignInViewController alloc] init];
-//        
-//       [self presentViewController:signInVC animated:YES completion:nil];
         
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
         UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"loginScreen"];
@@ -211,50 +208,45 @@
         
         [self presentViewController:vc animated:YES completion:nil];
         
-//        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Please Log in"
-//                                                          message:@"To save a recipe, you must have an account with IPS and be logged in."
-//                                                         delegate:nil
-//                                                cancelButtonTitle:@"Cancel"
-//                                                otherButtonTitles:@"Login with Facebook", nil];
-//        [message show];
+
     }
 
 }
 
 
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
-    
-    NSLog(@"index: %@", title);
-    
-    if(buttonIndex == 0)
-    {
-        NSLog(@"Loggin into FB");
-        
-        // The permissions requested from the user
-        NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location"];
-        
-        // Login PFUser using Facebook
-        [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
-            //        [_activityIndicator stopAnimating]; // Hide loading indicator
-            
-            if (!user) {
-                if (!error) {
-                    NSLog(@"Uh oh. The user cancelled the Facebook login.");
-                } else {
-                    NSLog(@"Uh oh. An error occurred: %@", error);
-                }
-            } else if (user.isNew) {
-                NSLog(@"User with facebook signed up and logged in!");
-                //            [self.navigationController pushViewController:[[UserDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped] animated:YES];
-            } else {
-                NSLog(@"User with facebook logged in!");
-                //            [self.navigationController pushViewController:[[UserDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped] animated:YES];
-            }
-        }];
-    }
-}
+//
+//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+//    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+//    
+//    NSLog(@"index: %@", title);
+//    
+//    if(buttonIndex == 0)
+//    {
+//        NSLog(@"Loggin into FB");
+//        
+//        // The permissions requested from the user
+//        NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location"];
+//        
+//        // Login PFUser using Facebook
+//        [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
+//            //        [_activityIndicator stopAnimating]; // Hide loading indicator
+//            
+//            if (!user) {
+//                if (!error) {
+//                    NSLog(@"Uh oh. The user cancelled the Facebook login.");
+//                } else {
+//                    NSLog(@"Uh oh. An error occurred: %@", error);
+//                }
+//            } else if (user.isNew) {
+//                NSLog(@"User with facebook signed up and logged in!");
+//                //            [self.navigationController pushViewController:[[UserDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped] animated:YES];
+//            } else {
+//                NSLog(@"User with facebook logged in!");
+//                //            [self.navigationController pushViewController:[[UserDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped] animated:YES];
+//            }
+//        }];
+//    }
+//}
 
 
 
