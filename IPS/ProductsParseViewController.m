@@ -24,7 +24,6 @@
 //    UIImage *image = [UIImage imageNamed:@"peak-thumbnail.png"];
 //    [navBar setBackgroundImage:image forBarMetrics:(UIBarMetricsDefault)];
     
-    
 }
 
 

@@ -63,16 +63,13 @@
 
 - (PFQuery *)queryForTable {
     
-    // get actual user location!!
     
     PFGeoPoint *userGeoPoint = [PFGeoPoint geoPointWithLatitude:userLocation.coordinate.latitude
                                                       longitude:userLocation.coordinate.longitude];
     PFQuery *query = [PFQuery queryWithClassName:@"Market"];
     [query whereKey:@"GeoPoint" nearGeoPoint:userGeoPoint withinMiles:5.0];
 
-//    
-//    NSArray *placeObjects = [query findObjects];
-//    NSLog(@"%@", placeObjects);
+
     
     
     // If no objects are loaded in memory, we look to the cache

@@ -15,4 +15,6 @@
 
 - (IBAction)cancelLogin:(id)sender;
 
+- (void)updateUserAccount;
+
 @end

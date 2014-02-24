@@ -7,8 +7,12 @@
 //
 
 #import <Parse/Parse.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface BuzzViewController : PFQueryTableViewController
+@interface BuzzViewController : PFQueryTableViewController <CLLocationManagerDelegate> {
+    CLLocationManager *locationManager;
+    CLLocation *userLocation;
+}
 
 - (IBAction)addComment:(id)sender;
 @end
