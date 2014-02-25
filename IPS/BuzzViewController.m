@@ -37,6 +37,7 @@
     locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
+    
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
@@ -67,6 +68,7 @@
     NSDate *now = [NSDate date];
     NSDate *pastDate = [now dateByAddingTimeInterval:-60*24*60*60];
     [listQuery whereKey:@"updatedAt" greaterThan:pastDate];
+    [listQuery includeKey:@"userId"];
     
     [listQuery whereKey:@"status" equalTo:@"approved"];
     
@@ -85,26 +87,45 @@
                                       reuseIdentifier:CellIdentifier];
     }
     
+//    NSString *userID = [object objectForKey:@"userId"];
+//    NSLog(@"UserID = %@", userID);
+////    [listQuery whereKey:@"user" equalTo: [PFUser currentUser]];
+//    
+//    
+//    PFQuery *query = [PFUser query];
+//    [query getObjectInBackgroundWithId:userID block:^(PFObject *userData, NSError *error) {
+//        // Do something with the returned PFObject in the gameScore variable.
+//        NSLog(@"The userdata is: %@", userData);
+//        
+//
+//        
+//    }];
+    
+    PFUser *user;
+    user = [object objectForKey:@"userId"];
+    NSLog(@"User object %@", user);
+   
+    
+    UIImageView *userImage;
+    userImage = (UIImageView *)[cell viewWithTag:1];
+    
+    PFFile *imageFile = [user objectForKey:@"userImage"];
+    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error){
+        if (!error) {
+            UIImage *MyPicture = [UIImage imageWithData:data];
+            userImage.image = MyPicture;
+        }
+    }];
+    [userImage setClipsToBounds:YES];
+    
+    
     
     UILabel *userName;
     userName = (UILabel *)[cell viewWithTag:2];
     //    productName.numberOfLines = 0;
     //    [productName sizeToFit];
-    userName.text = @"JP BERTI";
+    userName.text = [user objectForKey:@"name"];
     
-//    [object objectForKey:@"name"];
-    
-//    UIImageView *userImage;
-//    userImage = (UIImageView *)[cell viewWithTag:1];
-//    
-//    PFFile *imageFile = [object objectForKey:@"image"];
-//    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error){
-//        if (!error) {
-//            UIImage *MyPicture = [UIImage imageWithData:data];
-//            userImage.image = MyPicture;
-//        }
-//    }];
-//    [userImage setClipsToBounds:YES];
     
     UILabel *comment;
     comment = (UILabel *)[cell viewWithTag:3];
@@ -119,7 +140,16 @@
     
     UILabel *date;
     date = (UILabel *)[cell viewWithTag:4];
-    date.text = [object objectForKey:@"updatedAt"];
+//    date.text = @"yo momma";
+    NSDate *postDate = [object updatedAt];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+
+    [formatter setLocale:locale];
+    [formatter setDateFormat:@"MM/dd/yyyy HH:mm"];
+//    NSLog(@"%@", [formatter stringFromDate:date]);
+    date.text = [formatter stringFromDate:postDate];
     
     
     return cell;
