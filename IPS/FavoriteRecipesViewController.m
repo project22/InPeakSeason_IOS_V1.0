@@ -77,4 +77,8 @@
     
 }
 
+- (IBAction)deleteFavorites:(id)sender {
+    
+    
+}
 @end

@@ -9,5 +9,6 @@
 #import <Parse/Parse.h>
 
 @interface FavoriteRecipesViewController : PFQueryTableViewController
+- (IBAction)deleteFavorites:(id)sender;
 
 @end

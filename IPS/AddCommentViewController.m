@@ -30,7 +30,17 @@
     
     self.postButton.enabled = NO;
     geocoder = [[CLGeocoder alloc] init];
+//    self.comment.clearsOnInsertion = YES;
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(clearTextField)
+                                                 name:UITextViewTextDidBeginEditingNotification
+                                               object:self.comment];
+    
+}
+
+-(void)clearTextField {
+    self.comment.text = @"";
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {

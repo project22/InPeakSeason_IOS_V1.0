@@ -136,10 +136,30 @@
 
 - (IBAction)deleteList:(id)sender {
     
+    if ([PFUser currentUser] != nil) {
+        
+        
+        PFQuery *listQuery = [PFQuery queryWithClassName:@"ShoppingItem"];
+        [listQuery whereKey:@"user" equalTo: [PFUser currentUser]];
+
+        
+        //destroy all these records
+//        for (PFObject *listItem in listQuery) {
+//            [listItem deleteInBackground];
+//        }
+
+
+        
+        
+        
+    }
+    
     PFQuery *listQuery = [PFQuery queryWithClassName:@"ShoppingItem"];
     [listQuery whereKey:@"user" equalTo: [PFUser currentUser]];
     
     NSLog(@"%ld", (long)listQuery.countObjects);
+    
+    
     
 
 }
