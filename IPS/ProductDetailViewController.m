@@ -23,6 +23,8 @@
 @implementation ProductDetailViewController {
     NSArray *recipeArray;
     long selectedRecipeIndex;
+    NSString *selectedRecipeURL;
+    NSString *selectedRecipeTitle;
 }
 
 
@@ -123,39 +125,41 @@
         [subview addSubview:URLbutton];
         
         //tab on view
-//        UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
-//        [tap setNumberOfTapsRequired:1];
-//        [subview addGestureRecognizer:tap];
+        UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(handleTap:)];
+
+        doubleTap.accessibilityValue = [recipeArray objectAtIndex:i];
+        doubleTap.numberOfTapsRequired = 2;
+        [subview addGestureRecognizer:doubleTap];
 
         [self.recipeScrollView addSubview:subview];
         
     }
 }
 
-- (void)openRecipeURL:(UIButton *)sender {
-    
-    UIButton *button = (UIButton*) sender;
-    NSLog(@"the tag of button is %ld", (long)button.tag);
-    selectedRecipeIndex = button.tag;
-    
-    
-    [self performSegueWithIdentifier:@"openRecipe" sender:self];
+- (void)handleTap:(UITapGestureRecognizer *)sender
+{
+    if (sender.state == UIGestureRecognizerStateEnded)
+    {
+        // handling code
+        selectedRecipeURL = [NSString stringWithFormat:@"%@", [sender.accessibilityValue valueForKey:@"source_url"]];
+        selectedRecipeTitle = [NSString stringWithFormat:@"%@", [sender.accessibilityValue valueForKey:@"title"]];
+        
+        NSLog(@"tapped: %@", sender.accessibilityValue);
+        [self performSegueWithIdentifier:@"openRecipe" sender:self];
+    }
 }
 
-//- (void)handleTap:(UITapGestureRecognizer *)sender {
+//- (void)openRecipeURL:(UIButton *)sender {
 //    
-//    if (sender.state == UIGestureRecognizerStateEnded)
-//    {
-//        UITapGestureRecognizer *button = (UITapGestureRecognizer*) sender;
-//        NSLog(@"the tag of button is %ld", (long)button.tag);
-//        selectedRecipeIndex = button.tag;
-//        
-//        
-//        [self performSegueWithIdentifier:@"openRecipe" sender:self];
-//    }
+//    UIButton *button = (UIButton*) sender;
+//    NSLog(@"the tag of button is %ld", (long)button.tag);
+//    selectedRecipeIndex = button.tag;
 //    
 //    
+//    [self performSegueWithIdentifier:@"openRecipe" sender:self];
 //}
+
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -165,9 +169,14 @@
         
         RecipeDetailViewController *recipeDetail = segue.destinationViewController;
         
-        recipeDetail.recipeURL = [[recipeArray objectAtIndex:selectedRecipeIndex] valueForKey:@"source_url"];
         
-        recipeDetail.recipeTitle = [[recipeArray objectAtIndex:selectedRecipeIndex] valueForKey:@"title"];
+        recipeDetail.recipeURL = selectedRecipeURL;
+        recipeDetail.recipeTitle = selectedRecipeTitle;
+
+        
+//        recipeDetail.recipeURL = [[recipeArray objectAtIndex:selectedRecipeIndex] valueForKey:@"source_url"];
+        
+//        recipeDetail.recipeTitle = [[recipeArray objectAtIndex:selectedRecipeIndex] valueForKey:@"title"];
     }
 }
 
@@ -215,39 +224,7 @@
 }
 
 
-//
-//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-//    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
-//    
-//    NSLog(@"index: %@", title);
-//    
-//    if(buttonIndex == 0)
-//    {
-//        NSLog(@"Loggin into FB");
-//        
-//        // The permissions requested from the user
-//        NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location"];
-//        
-//        // Login PFUser using Facebook
-//        [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
-//            //        [_activityIndicator stopAnimating]; // Hide loading indicator
-//            
-//            if (!user) {
-//                if (!error) {
-//                    NSLog(@"Uh oh. The user cancelled the Facebook login.");
-//                } else {
-//                    NSLog(@"Uh oh. An error occurred: %@", error);
-//                }
-//            } else if (user.isNew) {
-//                NSLog(@"User with facebook signed up and logged in!");
-//                //            [self.navigationController pushViewController:[[UserDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped] animated:YES];
-//            } else {
-//                NSLog(@"User with facebook logged in!");
-//                //            [self.navigationController pushViewController:[[UserDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped] animated:YES];
-//            }
-//        }];
-//    }
-//}
+
 
 
 

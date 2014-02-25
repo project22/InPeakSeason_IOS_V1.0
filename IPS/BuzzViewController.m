@@ -37,6 +37,8 @@
     locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
+    [self.view setBackgroundColor:[UIColor colorWithRed:192.0/255 green:218.0/255 blue:178.0/255 alpha:1.0]];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
 }
 
