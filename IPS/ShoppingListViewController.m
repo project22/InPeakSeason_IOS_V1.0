@@ -118,6 +118,7 @@
     
     UIImageView *productImage;
     productImage = (UIImageView *)[cell viewWithTag:1];
+    [productImage.layer setCornerRadius:29.0];
     
     PFFile *imageFile = [object objectForKey:@"image"];
     [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error){

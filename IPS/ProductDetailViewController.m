@@ -71,8 +71,7 @@
         CGRect frame;
         frame.origin.x = self.recipeScrollView.frame.size.width * i;
         frame.origin.y = 0;
-//        frame.size.width = 50;
-//        frame.size.height =
+
         frame.size = self.recipeScrollView.frame.size;
         
         UIView *subview = [[UIView alloc] initWithFrame:frame];
@@ -105,9 +104,9 @@
                                }];
         
         
-        UILabel *recipeTitle =[[UILabel alloc] initWithFrame:CGRectMake(10,190,self.recipeScrollView.frame.size.width -20, 40)];
+        UILabel *recipeTitle =[[UILabel alloc] initWithFrame:CGRectMake(0,self.recipeScrollView.frame.size.height - 50, self.recipeScrollView.frame.size.width , 50)];
         recipeTitle.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.7f];
-        recipeTitle.textAlignment = NSTextAlignmentCenter;
+        recipeTitle.textAlignment = NSTextAlignmentLeft;
         
         NSString *recipeName = [[recipeArray objectAtIndex:i] valueForKey:@"title"];
        
@@ -116,10 +115,16 @@
         
         [subview addSubview:recipeTitle];
         
-        UIButton *URLbutton = [[UIButton alloc] initWithFrame:CGRectMake(200, 10, 100, 20)];
-        URLbutton.backgroundColor = [UIColor orangeColor];
-        [URLbutton setTitle:@"View Recipe" forState:UIControlStateNormal];
-        URLbutton.tag = i;
+        
+        UIButton *URLbutton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [URLbutton setFrame:CGRectMake(220, 10, 40, 40)];
+        
+        UIImage *ViewRecipe =  [UIImage imageNamed:@"search-50.png"];
+        [URLbutton setImage:ViewRecipe forState:UIControlStateNormal];
+        [URLbutton setTintColor:[UIColor whiteColor]];
+        [URLbutton setContentMode:UIViewContentModeScaleAspectFill];
+        
+        URLbutton.accessibilityValue = [recipeArray objectAtIndex:i];
         
         [URLbutton addTarget:self action:@selector(openRecipeURL:) forControlEvents:UIControlEventTouchUpInside];
         [subview addSubview:URLbutton];
@@ -132,6 +137,68 @@
         [subview addGestureRecognizer:doubleTap];
 
         [self.recipeScrollView addSubview:subview];
+        
+        //favoriting recipe button
+        UIButton *favButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [favButton setFrame:CGRectMake(270, 8, 40, 40)];
+        
+        UIImage *favRecipe =  [UIImage imageNamed:@"like-50.png"];
+        [favButton setImage:favRecipe forState:UIControlStateNormal];
+        [favButton setTintColor:[UIColor whiteColor]];
+        [favButton setContentMode:UIViewContentModeScaleAspectFill];
+        
+        favButton.accessibilityValue = [recipeArray objectAtIndex:i];
+        
+        [favButton addTarget:self action:@selector(facRecipe:) forControlEvents:UIControlEventTouchUpInside];
+        [subview addSubview:favButton];
+        
+    }
+}
+
+- (void)facRecipe:(UIButton *)sender {
+    NSLog(@"favoriting");
+    if ([PFUser currentUser] != nil) {
+        
+        NSLog(@"logged in");
+        PFUser *user = [PFUser currentUser];
+        
+        // Make a new post
+        PFObject *favRecipe = [PFObject objectWithClassName:@"FavRecipe"];
+        
+        
+        favRecipe[@"title"] = [sender.accessibilityValue valueForKey:@"title"];
+        favRecipe[@"source_url"] = [sender.accessibilityValue valueForKey:@"source_url"];
+        favRecipe[@"user"] = user;
+        
+        
+        
+        NSURL *pictureURL = [NSURL URLWithString:[sender.accessibilityValue valueForKey:@"image_url"]];
+        
+        //convert this to a picture for parse and upload
+        
+        NSData *picData = [NSData dataWithContentsOfURL:pictureURL];
+        PFFile *picFile = [PFFile fileWithData:picData];
+        favRecipe[@"recipe_image"] = picFile;
+        
+        
+        [favRecipe save];
+        
+//        [self.addToShoppingList setTitle:@"Added!" forState:UIControlStateNormal];
+//        self.addToShoppingList.enabled = NO;
+        
+    } else {
+        NSLog(@"Not logged in");
+        
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+        UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"loginScreen"];
+        
+        
+        [vc setModalPresentationStyle:UIModalPresentationFullScreen];
+        
+        
+        [self presentViewController:vc animated:YES completion:nil];
+        
         
     }
 }
@@ -149,15 +216,23 @@
     }
 }
 
-//- (void)openRecipeURL:(UIButton *)sender {
-//    
+- (void)openRecipeURL:(UIButton *)sender {
+    
+
+    
 //    UIButton *button = (UIButton*) sender;
 //    NSLog(@"the tag of button is %ld", (long)button.tag);
 //    selectedRecipeIndex = button.tag;
 //    
 //    
 //    [self performSegueWithIdentifier:@"openRecipe" sender:self];
-//}
+    
+    selectedRecipeURL = [NSString stringWithFormat:@"%@", [sender.accessibilityValue valueForKey:@"source_url"]];
+    selectedRecipeTitle = [NSString stringWithFormat:@"%@", [sender.accessibilityValue valueForKey:@"title"]];
+    
+    NSLog(@"tapped: %@", sender.accessibilityValue);
+    [self performSegueWithIdentifier:@"openRecipe" sender:self];
+}
 
 
 
@@ -200,6 +275,9 @@
         
         shoppingItem[@"itemID"] = [self.exam objectId];
         shoppingItem[@"user"] = user;
+        shoppingItem[@"complete"] = [NSNumber numberWithBool:NO];
+        
+        
         [shoppingItem save];
         
         [self.addToShoppingList setTitle:@"Added!" forState:UIControlStateNormal];
