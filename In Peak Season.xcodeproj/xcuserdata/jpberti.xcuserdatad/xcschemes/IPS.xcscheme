@@ -17,7 +17,7 @@
                BlueprintIdentifier = "DBFC778F188DE381000181C6"
                BuildableName = "IPS.app"
                BlueprintName = "IPS"
-               ReferencedContainer = "container:IPS.xcodeproj">
+               ReferencedContainer = "container:In Peak Season.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "DBFC77AA188DE381000181C6"
                BuildableName = "IPSTests.xctest"
                BlueprintName = "IPSTests"
-               ReferencedContainer = "container:IPS.xcodeproj">
+               ReferencedContainer = "container:In Peak Season.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -45,7 +45,7 @@
             BlueprintIdentifier = "DBFC778F188DE381000181C6"
             BuildableName = "IPS.app"
             BlueprintName = "IPS"
-            ReferencedContainer = "container:IPS.xcodeproj">
+            ReferencedContainer = "container:In Peak Season.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -64,7 +64,7 @@
             BlueprintIdentifier = "DBFC778F188DE381000181C6"
             BuildableName = "IPS.app"
             BlueprintName = "IPS"
-            ReferencedContainer = "container:IPS.xcodeproj">
+            ReferencedContainer = "container:In Peak Season.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -82,7 +82,7 @@
             BlueprintIdentifier = "DBFC778F188DE381000181C6"
             BuildableName = "IPS.app"
             BlueprintName = "IPS"
-            ReferencedContainer = "container:IPS.xcodeproj">
+            ReferencedContainer = "container:In Peak Season.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

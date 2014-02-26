@@ -46,7 +46,6 @@
 		DBFC77ED188F7222000181C6 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFC77EC188F7222000181C6 /* MobileCoreServices.framework */; };
 		DBFC77EF188F722B000181C6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFC77EE188F722B000181C6 /* QuartzCore.framework */; };
 		DBFC77F1188F7234000181C6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFC77F0188F7234000181C6 /* Security.framework */; };
-		DBFC77F3188F723A000181C6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFC77F2188F723A000181C6 /* StoreKit.framework */; };
 		DBFC77F5188F7244000181C6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFC77F4188F7244000181C6 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
@@ -120,7 +119,6 @@
 		DBFC77EC188F7222000181C6 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		DBFC77EE188F722B000181C6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DBFC77F0188F7234000181C6 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		DBFC77F2188F723A000181C6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		DBFC77F4188F7244000181C6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -130,7 +128,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBFC77F5188F7244000181C6 /* SystemConfiguration.framework in Frameworks */,
-				DBFC77F3188F723A000181C6 /* StoreKit.framework in Frameworks */,
 				DBFC77F1188F7234000181C6 /* Security.framework in Frameworks */,
 				DBFC77EF188F722B000181C6 /* QuartzCore.framework in Frameworks */,
 				DBFC77ED188F7222000181C6 /* MobileCoreServices.framework in Frameworks */,
@@ -257,7 +254,6 @@
 			children = (
 				DB4D4B0418A5DFB3004F5787 /* FacebookSDK.framework */,
 				DBFC77F4188F7244000181C6 /* SystemConfiguration.framework */,
-				DBFC77F2188F723A000181C6 /* StoreKit.framework */,
 				DBFC77F0188F7234000181C6 /* Security.framework */,
 				DBFC77EE188F722B000181C6 /* QuartzCore.framework */,
 				DBFC77EC188F7222000181C6 /* MobileCoreServices.framework */,
@@ -410,12 +406,20 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = JPBerti;
 				TargetAttributes = {
+					DBFC778F188DE381000181C6 = {
+						DevelopmentTeam = Z59M2448A6;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
+					};
 					DBFC77AA188DE381000181C6 = {
 						TestTargetID = DBFC778F188DE381000181C6;
 					};
 				};
 			};
-			buildConfigurationList = DBFC778B188DE381000181C6 /* Build configuration list for PBXProject "IPS" */;
+			buildConfigurationList = DBFC778B188DE381000181C6 /* Build configuration list for PBXProject "In Peak Season" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -595,6 +599,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/jpberti/Documents/workspace/IPS_V1.0/IPS,
@@ -612,6 +617,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/jpberti/Documents/workspace/IPS_V1.0/IPS,
@@ -669,7 +675,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DBFC778B188DE381000181C6 /* Build configuration list for PBXProject "IPS" */ = {
+		DBFC778B188DE381000181C6 /* Build configuration list for PBXProject "In Peak Season" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DBFC77BA188DE381000181C6 /* Debug */,

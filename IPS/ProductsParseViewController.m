@@ -23,7 +23,12 @@
 //    UINavigationBar *navBar = self.navigationController.navigationBar;
 //    UIImage *image = [UIImage imageNamed:@"peak-thumbnail.png"];
 //    [navBar setBackgroundImage:image forBarMetrics:(UIBarMetricsDefault)];
+//    self.navigationItem.titleView = [[UIImageView alloc] init];
     
+    
+    UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithCustomView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"peak_logo.png"]]];
+    
+    self.navigationItem.leftBarButtonItem = item;
 }
 
 

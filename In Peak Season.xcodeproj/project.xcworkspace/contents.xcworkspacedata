@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:IPS.xcodeproj">
+      location = "self:In Peak Season.xcodeproj">
    </FileRef>
 </Workspace>

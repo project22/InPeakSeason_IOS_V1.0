@@ -15,6 +15,9 @@
 @end
 
 @implementation ShoppingListViewController
+{
+    NSArray *shoppingList;
+}
 
 
 - (void)viewDidLoad
@@ -33,6 +36,26 @@
     return YES;
 }
 
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        //add code here for when you hit delete
+        NSLog(@"deleting shopping item");
+        NSLog(@"shoppingList = %@", shoppingList);
+        PFObject *object = [shoppingList objectAtIndex:indexPath.row];
+        
+        
+        //        NSLog(@"index path: %@", indexPath);
+//        PFObject *object = [PFObject objectWithoutDataWithClassName:@"ShoppingItem"
+//                                                           objectId:@"efgh"];
+        [object delete];
+        [self.tableView reloadData];
+        NSLog(@"Object: %@", object);
+        
+    }
+}
+
 
 -(void)viewWillAppear:(BOOL)animated {
     [self loadObjects];
@@ -43,7 +66,7 @@
     self = [super initWithStyle:style];
     if (self) {
         
-        self.className = @"Product";
+        self.className = @"ShoppingItem";
         self.pullToRefreshEnabled = YES;
         self.paginationEnabled = YES;
         self.objectsPerPage = 25;
@@ -61,6 +84,17 @@
         //    [seasonQuery whereKey:@"quality" greaterThan:[NSNumber numberWithInt:3]];
         
         
+        [listQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                NSLog(@"%@", objects);
+                
+                shoppingList = objects;
+            } else {
+                // Log details of the failure
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }
+        }];
+        
         PFQuery *query = [PFQuery queryWithClassName:@"Product"];
         
         [query whereKey:@"objectId" matchesKey:@"itemID" inQuery:listQuery];
@@ -74,6 +108,8 @@
         
         [query orderByDescending:@"createdAt"];
         [query whereKey:@"objectId" matchesKey:@"itemID" inQuery:listQuery];
+        
+//        shoppingList = listQuery;
         return query;
         
 
@@ -131,6 +167,8 @@
     
     return cell;
 }
+
+
 
 
 

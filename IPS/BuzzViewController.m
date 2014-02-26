@@ -37,7 +37,7 @@
     locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
-    [self.view setBackgroundColor:[UIColor colorWithRed:192.0/255 green:218.0/255 blue:178.0/255 alpha:1.0]];
+    [self.view setBackgroundColor:[UIColor colorWithRed:220.0/255 green:220.0/255 blue:220.0/255 alpha:1.0]];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
 }
@@ -73,6 +73,7 @@
     [listQuery includeKey:@"userId"];
     
     [listQuery whereKey:@"status" equalTo:@"approved"];
+    [listQuery orderByDescending:@"updatedAt"];
     
     
     return listQuery;

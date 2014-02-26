@@ -105,7 +105,7 @@
         
         comment[@"userId"] = user;
         comment[@"comment"] = self.comment.text;
-        comment[@"status"] = @"new";
+        comment[@"status"] = @"approved";
         
         CLLocationCoordinate2D coordinate = [userLocation coordinate];
         PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:coordinate.latitude
