@@ -29,6 +29,8 @@
     UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithCustomView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"peak_logo.png"]]];
     
     self.navigationItem.leftBarButtonItem = item;
+    
+    [self.view setBackgroundColor:[UIColor colorWithRed:220.0/255 green:220.0/255 blue:220.0/255 alpha:1.0]];
 }
 
 

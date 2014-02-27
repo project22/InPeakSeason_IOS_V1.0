@@ -56,6 +56,30 @@
     }
 }
 
+- (void) tableView: (UITableView *) tableView didSelectRowAtIndexPath: (NSIndexPath *) indexPath {
+    NSLog(@"tapped on row");
+    
+    NSLog(@"index path %ld", (long)indexPath.row);
+    PFObject *object = [shoppingList objectAtIndex:indexPath.row];
+//    NSLog(@"shoppingList = %@", shoppingList);
+    NSLog(@"Object ID %@", [object objectId]);
+    
+    
+    //update status at Parse
+    PFQuery *query = [PFQuery queryWithClassName:@"ShoppingItem"];
+    
+    // Retrieve the object by id
+    [query getObjectInBackgroundWithId:[object objectId] block:^(PFObject *item, NSError *error) {
+        
+        
+        item[@"complete"] = @YES;
+        [item saveInBackground];
+        
+    }];
+    
+}
+
+
 
 -(void)viewWillAppear:(BOOL)animated {
     [self loadObjects];
@@ -148,8 +172,7 @@
     
     UILabel *productName;
     productName = (UILabel *)[cell viewWithTag:2];
-    //    productName.numberOfLines = 0;
-    //    [productName sizeToFit];
+
     productName.text = [object objectForKey:@"name"];
     
     UIImageView *productImage;
@@ -164,6 +187,12 @@
         }
     }];
     [productImage setClipsToBounds:YES];
+
+    
+    if ([[[shoppingList objectAtIndex:indexPath.row] objectForKey:@"complete" ]  isEqual: @YES]) {
+        cell.backgroundColor = [UIColor redColor];
+        NSLog(@"completed");
+    }
     
     return cell;
 }
@@ -178,8 +207,8 @@
     if ([PFUser currentUser] != nil) {
         
         
-        PFQuery *listQuery = [PFQuery queryWithClassName:@"ShoppingItem"];
-        [listQuery whereKey:@"user" equalTo: [PFUser currentUser]];
+//        PFQuery *listQuery = [PFQuery queryWithClassName:@"ShoppingItem"];
+//        [listQuery whereKey:@"user" equalTo: [PFUser currentUser]];
 
         
         //destroy all these records
@@ -187,7 +216,22 @@
 //            [listItem deleteInBackground];
 //        }
 
-
+        PFQuery *query = [PFQuery queryWithClassName:@"ShoppingItem"];
+        [query whereKey:@"user" equalTo:[PFUser currentUser]];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                // The find succeeded.
+                NSLog(@"Will delete %d objects.", objects.count);
+                // Do something with the found objects
+                for (PFObject *object in objects) {
+                    NSLog(@"%@ deleted", object.objectId);
+                    [object deleteInBackground];
+                }
+            } else {
+                // Log details of the failure
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }
+        }];
         
         
         

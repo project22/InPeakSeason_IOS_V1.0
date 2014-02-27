@@ -11,9 +11,6 @@
 
 @interface ProductDetailViewController ()
 
-
-
-
 @property (strong, nonatomic) IBOutlet UIScrollView *recipeScrollView;
 
 - (void)openRecipeURL:(NSString*)URL;
@@ -33,16 +30,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    // This cleans up the spacing under the navbar.  
 
-    
     NSLog(@"Object ID %@", [_exam objectId] );
     
     self.productNameLabel.text = [self.exam objectForKey:@"name"];
     self.navigationItem.title = [self.exam objectForKey:@"name"];
     
-//    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-
     
     PFFile *imageFile = [self.exam objectForKey:@"image"];
     [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error){
@@ -50,7 +43,6 @@
             UIImage *MyPicture = [UIImage imageWithData:data];
             self.productImage.image = MyPicture;
             
-//            [self.navigationController.navigationBar setBackgroundImage:MyPicture forBarMetrics:UIBarMetricsDefault];
         }
     }];
     [self.productImage setClipsToBounds:YES];
@@ -59,10 +51,10 @@
     
     Recipe *recipes = [[Recipe alloc] init];
     
+    // make this asycronous
     NSDictionary *recipeDictionary = [recipes getRecipes: [self.exam objectForKey:@"name"]];
     
     recipeArray = [recipeDictionary objectForKey:@"recipes"];
-//    NSLog(@"from controller, the recipes are: %@", recipeArray);
 
     //output recipes into scroll view
     self.recipeScrollView.contentSize = CGSizeMake(self.recipeScrollView.frame.size.width * recipeArray.count, self.recipeScrollView.frame.size.height);
@@ -180,11 +172,8 @@
         PFFile *picFile = [PFFile fileWithData:picData];
         favRecipe[@"recipe_image"] = picFile;
         
-        
         [favRecipe save];
         
-//        [self.addToShoppingList setTitle:@"Added!" forState:UIControlStateNormal];
-//        self.addToShoppingList.enabled = NO;
         
     } else {
         NSLog(@"Not logged in");
@@ -220,13 +209,6 @@
     
 
     
-//    UIButton *button = (UIButton*) sender;
-//    NSLog(@"the tag of button is %ld", (long)button.tag);
-//    selectedRecipeIndex = button.tag;
-//    
-//    
-//    [self performSegueWithIdentifier:@"openRecipe" sender:self];
-    
     selectedRecipeURL = [NSString stringWithFormat:@"%@", [sender.accessibilityValue valueForKey:@"source_url"]];
     selectedRecipeTitle = [NSString stringWithFormat:@"%@", [sender.accessibilityValue valueForKey:@"title"]];
     
@@ -244,14 +226,8 @@
         
         RecipeDetailViewController *recipeDetail = segue.destinationViewController;
         
-        
         recipeDetail.recipeURL = selectedRecipeURL;
         recipeDetail.recipeTitle = selectedRecipeTitle;
-
-        
-//        recipeDetail.recipeURL = [[recipeArray objectAtIndex:selectedRecipeIndex] valueForKey:@"source_url"];
-        
-//        recipeDetail.recipeTitle = [[recipeArray objectAtIndex:selectedRecipeIndex] valueForKey:@"title"];
     }
 }
 
@@ -267,7 +243,7 @@
     
     if ([PFUser currentUser] != nil) {
         
-        NSLog(@"logged in");
+        NSLog(@"Saving item to shopping list");
         PFUser *user = [PFUser currentUser];
         
         // Make a new post
@@ -277,8 +253,26 @@
         shoppingItem[@"user"] = user;
         shoppingItem[@"complete"] = [NSNumber numberWithBool:NO];
         
+        // check to see if itemID already in DB for this user
+        PFQuery *query = [PFQuery queryWithClassName:@"ShoppingItem"];
+        [query whereKey:@"itemID" equalTo:[self.exam objectId]];
+        [query whereKey:@"user" equalTo:user];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                // The find succeeded.
+                if (objects.count <= 0) {
+                    //add the new record.
+                    [shoppingItem saveInBackground];
+                } else {
+                    NSLog(@"Shopping item already exists");
+                }
+            } else {
+                // Log details of the failure
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }
+        }];
         
-        [shoppingItem save];
+        
         
         [self.addToShoppingList setTitle:@"Added!" forState:UIControlStateNormal];
         self.addToShoppingList.enabled = NO;
@@ -290,13 +284,10 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
         UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"loginScreen"];
         
-        
         [vc setModalPresentationStyle:UIModalPresentationFullScreen];
        
-        
         [self presentViewController:vc animated:YES completion:nil];
         
-
     }
 
 }
