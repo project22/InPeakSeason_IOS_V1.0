@@ -20,12 +20,6 @@
 {
     [super viewDidLoad];
     
-//    UINavigationBar *navBar = self.navigationController.navigationBar;
-//    UIImage *image = [UIImage imageNamed:@"peak-thumbnail.png"];
-//    [navBar setBackgroundImage:image forBarMetrics:(UIBarMetricsDefault)];
-//    self.navigationItem.titleView = [[UIImageView alloc] init];
-    
-    
     UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithCustomView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"peak_logo.png"]]];
     
     self.navigationItem.leftBarButtonItem = item;
@@ -50,7 +44,7 @@
 
     PFQuery *seasonQuery = [PFQuery queryWithClassName:@"Season"];
     [seasonQuery whereKey:@"month" equalTo:@"2"];
-    [seasonQuery whereKey:@"quality" greaterThan:[NSNumber numberWithInt:3]];
+    [seasonQuery whereKey:@"quality" greaterThan:[NSNumber numberWithInt:0]];
     
     
     PFQuery *query = [PFQuery queryWithClassName:@"Product"];
@@ -64,6 +58,8 @@
     }
     
     [query orderByDescending:@"createdAt"];
+    
+//    [query includeKey:@"Season"];
     
     return query;
 }
@@ -79,15 +75,47 @@
                                       reuseIdentifier:CellIdentifier];
     }
     
+    
+    
+    NSLog(@"The PFObject is %@", object);
+    
+//    
+    PFRelation *studentsRelation = [object relationforKey:@"Season"];
+    PFQuery *query = studentsRelation.query;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Successfully retrieved %d season.", objects.count);
+            // Do something with the found objects
+            NSString *rating =  [objects[0] valueForKey:@"quality"];
+            NSLog(@"Rating %@", rating);
+            
+            //build the cell
+//            UILabel *ratingLabel;
+//            ratingLabel = (UILabel *)[cell viewWithTag:7];
+//            ratingLabel.text = rating;
+            
+
+            
+            
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+    
+    
 
     UILabel *productName;
     productName = (UILabel *)[cell viewWithTag:2];
-//    productName.numberOfLines = 0;
-//    [productName sizeToFit];
+
     productName.text = [object objectForKey:@"name"];
     
     UIImageView *productImage;
     productImage = (UIImageView *)[cell viewWithTag:1];
+    
+    
+    // figure out how this works, and apply above.
     
     PFFile *imageFile = [object objectForKey:@"image"];
     [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error){

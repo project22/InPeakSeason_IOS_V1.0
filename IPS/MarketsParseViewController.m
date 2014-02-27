@@ -29,9 +29,6 @@
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
     
-    //    UINavigationBar *navBar = self.navigationController.navigationBar;
-    //    UIImage *image = [UIImage imageNamed:@"peak-thumbnail.png"];
-    //    [navBar setBackgroundImage:image forBarMetrics:(UIBarMetricsDefault)];
     
     
 }
@@ -41,7 +38,6 @@
     userLocation = newLocation;
     [self queryForTable];
     [self loadObjects];
-    
     
 //    NSLog(@"OldLocation %f %f", oldLocation.coordinate.latitude, oldLocation.coordinate.longitude);
 //    NSLog(@"NewLocation %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
@@ -53,7 +49,7 @@
     self = [super initWithStyle:style];
     if (self) {
         
-//        self.className = @"Product";
+        self.className = @"Market";
         self.pullToRefreshEnabled = YES;
         self.paginationEnabled = YES;
         self.objectsPerPage = 25;
@@ -63,15 +59,12 @@
 
 - (PFQuery *)queryForTable {
     
-    
     PFGeoPoint *userGeoPoint = [PFGeoPoint geoPointWithLatitude:userLocation.coordinate.latitude
                                                       longitude:userLocation.coordinate.longitude];
     PFQuery *query = [PFQuery queryWithClassName:@"Market"];
     [query whereKey:@"GeoPoint" nearGeoPoint:userGeoPoint withinMiles:5.0];
 
 
-    
-    
     // If no objects are loaded in memory, we look to the cache
     // first to fill the table and then subsequently do a query
     // against the network.
@@ -79,11 +72,9 @@
         query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     }
     
-//    [query orderByDescending:@"GeoPoint"];
     [query whereKey:@"GeoPoint" nearGeoPoint:userGeoPoint];
     
-    
-//    [query orderByDescending:@"createdAt"];
+    [query orderByDescending:@"createdAt"];
     
     return query;
 }

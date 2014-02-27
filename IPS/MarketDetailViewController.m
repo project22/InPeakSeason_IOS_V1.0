@@ -35,7 +35,7 @@
 //    NSLog(@"mapHeight = %f", mapHeight);
 //    
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 16093.4, 16093.4);
-    [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
+    [self.mapView setRegion:[self.mapView regionThatFits:region] animated:NO];
     
     // Add an annotation
     
