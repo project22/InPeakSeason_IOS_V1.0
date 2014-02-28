@@ -15,6 +15,7 @@
 		DBAF42A818A9AF7800BB46CD /* MarketsParseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBAF42A718A9AF7800BB46CD /* MarketsParseViewController.m */; };
 		DBAF42B018A9B7FB00BB46CD /* GetLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = DBAF42AF18A9B7FB00BB46CD /* GetLocation.m */; };
 		DBBB3BB618BFBB420098763A /* MarketsMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBBB3BB518BFBB420098763A /* MarketsMapViewController.m */; };
+		DBBB3BB918BFD1BF0098763A /* MarketsViewContainerController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBBB3BB818BFD1BF0098763A /* MarketsViewContainerController.m */; };
 		DBBEE7D518B6B838002710FA /* ShoppingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBBEE7D418B6B838002710FA /* ShoppingListViewController.m */; };
 		DBBEE7D918B6E31F002710FA /* BuzzViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBBEE7D818B6E31F002710FA /* BuzzViewController.m */; };
 		DBBEE7DC18B6E4F7002710FA /* AddCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBBEE7DB18B6E4F7002710FA /* AddCommentViewController.m */; };
@@ -76,6 +77,8 @@
 		DBAF42AF18A9B7FB00BB46CD /* GetLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetLocation.m; sourceTree = "<group>"; };
 		DBBB3BB418BFBB410098763A /* MarketsMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketsMapViewController.h; sourceTree = "<group>"; };
 		DBBB3BB518BFBB420098763A /* MarketsMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketsMapViewController.m; sourceTree = "<group>"; };
+		DBBB3BB718BFD1BF0098763A /* MarketsViewContainerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketsViewContainerController.h; sourceTree = "<group>"; };
+		DBBB3BB818BFD1BF0098763A /* MarketsViewContainerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketsViewContainerController.m; sourceTree = "<group>"; };
 		DBBEE7D318B6B838002710FA /* ShoppingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListViewController.h; sourceTree = "<group>"; };
 		DBBEE7D418B6B838002710FA /* ShoppingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListViewController.m; sourceTree = "<group>"; };
 		DBBEE7D718B6E31F002710FA /* BuzzViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuzzViewController.h; sourceTree = "<group>"; };
@@ -163,6 +166,8 @@
 		DBAF42A918A9B4B800BB46CD /* Unused Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DBBB3BB718BFD1BF0098763A /* MarketsViewContainerController.h */,
+				DBBB3BB818BFD1BF0098763A /* MarketsViewContainerController.m */,
 				DBFC77CD188DE453000181C6 /* ProductsViewController.h */,
 				DBFC77CE188DE453000181C6 /* ProductsViewController.m */,
 				DBFC77D0188DE46B000181C6 /* MarketsViewController.h */,
@@ -213,6 +218,15 @@
 				DBAF42AF18A9B7FB00BB46CD /* GetLocation.m */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		DBBB3BBA18C032580098763A /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				DB4D4B0618A7FC78004F5787 /* SignInViewController.h */,
+				DB4D4B0718A7FC78004F5787 /* SignInViewController.m */,
+			);
+			name = Authentication;
 			sourceTree = "<group>";
 		};
 		DBBEE7D218B6B7BA002710FA /* ShoppingList */ = {
@@ -341,8 +355,7 @@
 				DBAF42AB18A9B50600BB46CD /* Markets */,
 				DBAF42AC18A9B50D00BB46CD /* Recipes */,
 				DBAF42A918A9B4B800BB46CD /* Unused Controllers */,
-				DB4D4B0618A7FC78004F5787 /* SignInViewController.h */,
-				DB4D4B0718A7FC78004F5787 /* SignInViewController.m */,
+				DBBB3BBA18C032580098763A /* Authentication */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -476,6 +489,7 @@
 				DB56BCDD1893270100AF2289 /* ProductsParseViewController.m in Sources */,
 				DBFC77DB188DE4CE000181C6 /* MarketDetailViewController.m in Sources */,
 				DB4D4B0818A7FC78004F5787 /* SignInViewController.m in Sources */,
+				DBBB3BB918BFD1BF0098763A /* MarketsViewContainerController.m in Sources */,
 				DBFC77A0188DE381000181C6 /* main.m in Sources */,
 				DBBB3BB618BFBB420098763A /* MarketsMapViewController.m in Sources */,
 				DBFC77D8188DE4B6000181C6 /* ProductDetailViewController.m in Sources */,

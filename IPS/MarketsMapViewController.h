@@ -15,10 +15,13 @@
     CLLocationManager *locationManager;
     CLLocation *userLocation;
 }
+- (IBAction)openListView:(id)sender;
+
 
 - (void)populateMap;
 - (void) showDetails:(PFObject*)marketObject;
-- (void)dissmissMapview;
+
+
 
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;

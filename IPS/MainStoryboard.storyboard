@@ -330,11 +330,11 @@
             <objects>
                 <viewController id="seJ-bO-Oug" customClass="MarketDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zet-3W-8AN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="8PO-3o-19R">
-                                <rect key="frame" x="0.0" y="60" width="320" height="455"/>
+                                <rect key="frame" x="0.0" y="109" width="320" height="455"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="RDW-at-1K5">
@@ -387,35 +387,50 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ryg-OU-O9D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2640" y="401"/>
+            <point key="canvasLocation" x="3972" y="-55"/>
+        </scene>
+        <!--Markets Map View Controller - Local Markets-->
+        <scene sceneID="lNW-M1-x9X">
+            <objects>
+                <viewController id="8Ei-Zp-R7A" customClass="MarketsMapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EEo-gm-AF8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="RFW-gd-wMU">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Local Markets" id="MKB-ZK-2ZC">
+                        <barButtonItem key="rightBarButtonItem" title="List View" id="dVU-NZ-T0F">
+                            <connections>
+                                <action selector="openListView:" destination="8Ei-Zp-R7A" id="4st-A2-4IO"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="RFW-gd-wMU" id="Ejb-IF-u1t"/>
+                        <segue destination="TlV-Dy-9bM" kind="modal" identifier="toListView" modalTransitionStyle="flipHorizontal" id="EdQ-vM-gK7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sty-Ee-SEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2009" y="-273"/>
         </scene>
         <!--Markets Parse View Controller - Local Markets-->
         <scene sceneID="9PZ-G9-SYc">
             <objects>
                 <tableViewController id="gYj-F7-poR" customClass="MarketsParseViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="63" sectionHeaderHeight="22" sectionFooterHeight="22" id="LSg-2X-WA7">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="CW0-DQ-AZi">
-                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" id="0i4-zA-phq">
-                                    <rect key="frame" x="20" y="8" width="275" height="29"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <segments>
-                                        <segment title="Map View"/>
-                                        <segment title="List View"/>
-                                    </segments>
-                                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </segmentedControl>
-                            </subviews>
-                            <color key="backgroundColor" red="0.086274512110000007" green="0.73333334920000004" blue="0.1176470667" alpha="1" colorSpace="deviceRGB"/>
-                        </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="63" id="0aV-oP-IZr">
-                                <rect key="frame" x="0.0" y="130" width="320" height="63"/>
+                                <rect key="frame" x="0.0" y="66" width="320" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0aV-oP-IZr" id="Ge8-GP-Egf">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="62"/>
@@ -441,39 +456,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Local Markets" id="ndF-gF-mji">
-                        <barButtonItem key="rightBarButtonItem" image="waypoint_map-32" id="rSZ-CU-H0G">
+                        <barButtonItem key="rightBarButtonItem" title="Map View" id="rSZ-CU-H0G">
                             <connections>
-                                <segue destination="Z26-cv-oW1" kind="modal" modalTransitionStyle="flipHorizontal" id="RpX-Je-d96"/>
+                                <action selector="dismissModal:" destination="gYj-F7-poR" id="EPh-NM-IEJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="StW-Zs-Vtq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2013" y="-181"/>
-        </scene>
-        <!--Markets Map View Controller-->
-        <scene sceneID="mgZ-OZ-Tpd">
-            <objects>
-                <viewController id="Z26-cv-oW1" customClass="MarketsMapViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="K2B-fE-i3X">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="RFW-gd-wMU">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </mapView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <outlet property="mapView" destination="RFW-gd-wMU" id="G4u-qc-bUj"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4yY-qt-gZY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2634" y="-293"/>
+            <point key="canvasLocation" x="3406" y="-364"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="z7A-j9-nVs">
@@ -539,7 +531,7 @@
                     <connections>
                         <segue destination="rUS-YB-NnC" kind="relationship" relationship="viewControllers" id="Gvi-c6-DES"/>
                         <segue destination="iha-2C-2YZ" kind="relationship" relationship="viewControllers" id="1q9-bV-3wD"/>
-                        <segue destination="9JV-3C-C1I" kind="relationship" relationship="viewControllers" id="HMG-0m-9cv"/>
+                        <segue destination="cFh-Aa-mPg" kind="relationship" relationship="viewControllers" id="0Vt-YP-G5w"/>
                         <segue destination="egU-37-IRs" kind="relationship" relationship="viewControllers" id="o6z-bS-5gR"/>
                         <segue destination="CUr-3F-RAA" kind="relationship" relationship="viewControllers" id="g91-nx-eRJ"/>
                     </connections>
@@ -547,29 +539,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="laU-PY-ZbE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="107" y="453"/>
-        </scene>
-        <!--Navigation Controller - Local Markets-->
-        <scene sceneID="jPD-0B-PN6">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9JV-3C-C1I" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Local Markets" image="waypoint_map-32" id="dPb-Oe-PHR"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9oM-7r-72K">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.086274512110000007" green="0.73333334920000004" blue="0.1176470667" alpha="1" colorSpace="deviceRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="SnellRoundhand" family="Snell Roundhand" pointSize="28"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="gYj-F7-poR" kind="relationship" relationship="rootViewController" id="aCT-7g-Zfd"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LPs-t6-X5t" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="957" y="-274"/>
         </scene>
         <!--Navigation Controller - In Season-->
         <scene sceneID="k3v-eI-vyX">
@@ -790,6 +759,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C55-RW-4cE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="957" y="453"/>
+        </scene>
+        <!--Navigation Controller - Markets-->
+        <scene sceneID="NJT-Je-Eru">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cFh-Aa-mPg" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Markets" image="waypoint_map-32" id="iSQ-VT-uGS"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="481-dk-7L8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="SnellRoundhand" family="Snell Roundhand" pointSize="28"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8Ei-Zp-R7A" kind="relationship" relationship="rootViewController" id="Ykd-Uy-Avt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pvc-Hx-NU5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1483" y="-273"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qwW-EL-oE9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TlV-Dy-9bM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8u3-cq-09h">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gYj-F7-poR" kind="relationship" relationship="rootViewController" id="lgO-jU-Ovn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k44-MS-OjY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2880" y="-364"/>
         </scene>
     </scenes>
     <resources>

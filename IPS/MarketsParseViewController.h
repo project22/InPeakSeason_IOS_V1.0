@@ -16,5 +16,6 @@
     CLLocationManager *locationManager;
     CLLocation *userLocation;
 }
+- (IBAction)dismissModal:(id)sender;
 
 @end

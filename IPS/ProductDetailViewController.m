@@ -97,6 +97,7 @@
         
         
         UILabel *recipeTitle =[[UILabel alloc] initWithFrame:CGRectMake(0,self.recipeScrollView.frame.size.height - 50, self.recipeScrollView.frame.size.width , 50)];
+
         recipeTitle.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.7f];
         recipeTitle.textAlignment = NSTextAlignmentLeft;
         

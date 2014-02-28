@@ -27,14 +27,7 @@
     [locationManager startUpdatingLocation];
 
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button addTarget:self
-               action:@selector(dissmissMapview)
-     forControlEvents:UIControlEventTouchDown];
-    [button setTitle:@"List View" forState:UIControlStateNormal];
-    button.frame = CGRectMake(200, 10, 160.0, 40.0);
 
-    [self.view addSubview:button];
 }
 
 
@@ -49,6 +42,11 @@
     [locationManager stopUpdatingLocation];
 }
 
+
+- (IBAction)openListView:(id)sender {
+    NSLog(@"Opening List View");
+    [self performSegueWithIdentifier:@"toListView" sender:self];
+}
 
 - (void)populateMap {
     
@@ -102,15 +100,19 @@
     
 }
 
+
+
+
+
 - (void) showDetails:(PFObject*)marketObject {
     NSLog(@"opening market detail");
     MarketDetailViewController *marketDetail = [[MarketDetailViewController alloc] init ];
     
 }
 
-- (void)dissmissMapview {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+
+    
+
 
 
 
